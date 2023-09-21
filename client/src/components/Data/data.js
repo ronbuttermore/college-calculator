@@ -1,10 +1,12 @@
 import React from 'react';
+import './Data.css';
 
-function data() {
+const Data = () => {
     return (
-        <div>
-        </div>
-    )
-}
+      <div>
+        <p>Data Here</p>
+      </div>
+    );
+  };
 
-export default data;
+export default Data;
