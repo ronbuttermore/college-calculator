@@ -17,6 +17,12 @@ const resolvers = {
     test: async (parent, { testId }) => {
       return Test.findOne({ _id: testId });
     },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('thoughts');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -39,10 +45,10 @@ const resolvers = {
       return { token, user };
     },
 
-    addTest: async (parent, { name, savedby }) => {
-      const test = await Test.create({ name, savedby });
+    addTest: async (parent, { name, savedBy }) => {
+      const test = await Test.create({ name, savedBy });
       await User.findOneAndUpdate(
-        { username: savedby },
+        { username: savedBy },
         { $addToSet: { test: test._id } }
       );
       return test;

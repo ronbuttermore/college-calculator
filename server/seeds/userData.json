@@ -2,21 +2,25 @@
     {
         "username": "ronbuttermore",
         "email": "ronbuttermore@fakeemail.com",
-        "password": "password123"
+        "password": "password123",
+        "tests": ["650c6a9032920137f718aead"]
     },
     {
         "username": "danielford",
         "email": "danielford@fakeemail.com",
-        "password": "password456"
+        "password": "password456",
+        "tests": ["650c6bed7e27a30b1888135e"]
     },
     {
         "username": "renrojas",
         "email": "renrojas@fakeemail.com",
-        "password": "password789"
+        "password": "password789",
+        "tests": ["650c6bed7e27a30b1888135f"]
     },
     {
         "username": "sarahpaterson",
         "email": "sarahpaterson@fakeemail.com",
-        "password": "password000"
+        "password": "password000",
+        "tests": ["650c6bed7e27a30b18881360"]
     }
 ]

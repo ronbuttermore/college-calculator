@@ -14,7 +14,7 @@ type Test {
     name: String
     testnumber: Int
     testok: Boolean
-    savedby: String
+    savedBy: String
   }
 
   type Auth {
@@ -27,12 +27,13 @@ type Test {
     user(username: String!): User
     tests(username: String): [Test]
     test(testId: ID!): Test
+    me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addTest(name: String!, testnumber: Int!): Test
+    addTest(name: String!, savedBy: String!): Test
     removeTest(testID: ID!): Test
   }
 `;
