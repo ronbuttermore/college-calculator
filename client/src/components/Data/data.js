@@ -19,6 +19,7 @@ const Data = ({ tests, title }) => {
               </span>
             </h4>
               <p>is it working?: {test.testok}</p>
+              <p>This test was saved by {test.savedBy}</p>
           </div>
         ))}
     </div>

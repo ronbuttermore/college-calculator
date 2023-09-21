@@ -28,6 +28,7 @@ function Navbar() {
                   <Link to="/login">
                     Login
                   </Link>
+                  <br />
                   <Link to="/signup">
                     Signup
                   </Link>
