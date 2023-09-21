@@ -15,6 +15,10 @@ const testSchema = new Schema(
       testok: {
         type: Boolean,
         required: true
+      },
+      savedby: {
+        type: String,
+        trim: true,
       }
     }
   );
