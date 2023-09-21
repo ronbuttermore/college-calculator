@@ -15,7 +15,7 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_TEST = gql`
+export const QUERY_TESTS = gql`
   query getTest {
     test {
       _id

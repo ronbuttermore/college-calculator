@@ -7,6 +7,8 @@ function Signup() {
         <div>
             <h2>This will be the signup page</h2>
             <SignupForm />
+            <p>button here to submit and continue to results page</p>
+            <button>Submit</button>
         </div>
     );
 };
