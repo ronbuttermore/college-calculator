@@ -8,9 +8,8 @@ const typeDefs = gql`
     testok: Boolean
   }
 
-  # Define which queries the front end is allowed to make and what data is returned
   type Query {
-    test: [Test]
+    tests: [Test]!
   }
 `;
 

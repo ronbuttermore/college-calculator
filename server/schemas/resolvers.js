@@ -2,8 +2,8 @@ const { Test } = require('../models');
 
 const resolvers = {
   Query: {
-    test: async () => {
-      return await Test.find({});
+    tests: async () => {
+      return Test.find();
     }
   }
 };
