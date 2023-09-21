@@ -1,25 +1,80 @@
+import React from "react";
+import './App.css';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+} from "@apollo/client";
+
 import Navbar from "./components/Navbar/Navbar";
-import Welcome from "./components/Welcome/welcome";
-import Signup from "./components/Signup/signup";
-import Login from "./components/Login/login";
-import Form from "./components/Form/form";
-import Data from "./components/Data/data";
-import SavedSearch from "./components/SavedSearch/SavedSearch";
-import Footer from "./components/Footer/footer";
+import Home from './pages/Home/Home';
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Results from "./pages/Results/Results.js";
+import Comparison from './pages/Comparison/Comparison';
+import Footer from "./components/Footer/Footer";
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
-  return (
-      <div className="App">
-          <Navbar/>
-          <Welcome/>
-          <Signup/>
-          <Login/>
-          <Form/>
-          <Data/>
-          <SavedSearch/>
-          <Footer/>
-      </div>
-  );
-}
+
+  //var to conditionally render page
+  let currentpage = 'results';
+
+  if (currentpage === 'home') {
+    return (
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Navbar />
+          <Home />
+          <Footer />
+        </div>
+      </ApolloProvider>
+    );
+  } else if (currentpage === 'login') {
+      return (
+        <ApolloProvider client={client}>
+          <div className="App">
+            <Navbar />
+            <Login />
+            <Footer />
+          </div>
+        </ApolloProvider>
+      );
+    } else if (currentpage === 'signup') {
+        return (
+          <ApolloProvider client={client}>
+            <div className="App">
+              <Navbar />
+              <Signup />
+              <Footer />
+            </div>
+          </ApolloProvider>
+        );
+      } else if (currentpage === 'results') {
+        return (
+          <ApolloProvider client={client}>
+            <div className="App">
+                <Navbar />
+                <Results />
+                <Footer />
+            </div>
+          </ApolloProvider>
+        );
+      } else if (currentpage === 'comparison') {
+        return (
+          <ApolloProvider client={client}>
+            <div className="App">
+                <Navbar />
+                <Comparison />
+                <Footer />
+            </div>
+          </ApolloProvider>
+        );
+      }; 
+};
 
 export default App;
