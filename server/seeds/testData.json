@@ -1,0 +1,12 @@
+[
+    {
+        "name": "test1",
+        "testnumber": 1,
+        "testok": true
+    },
+    {
+        "name": "test2",
+        "testnumber": 2,
+        "testok": true
+    }
+]
