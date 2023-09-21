@@ -10,11 +10,14 @@ const testSchema = new Schema(
       },
       testnumber: {
         type: Number,
-        required: true
+        required: false
       },
       testok: {
         type: Boolean,
-        required: true
+        required: false
+      },
+      savedBy: {
+        type: String,
       }
     }
   );

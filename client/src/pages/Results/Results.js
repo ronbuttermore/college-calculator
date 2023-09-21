@@ -6,25 +6,23 @@ import SavedSearch from '../../components/SavedSearch/SavedSearch';
 import { QUERY_TESTS } from '../../utils/queries';
 
 function Results() {
+        const { loading, data } = useQuery(QUERY_TESTS);
+        const tests = data?.tests || [];
 
-    const { loading, data } = useQuery(QUERY_TESTS);
-    const tests = data?.tests || [];
-
-    return (
-        <main>
-            <div>
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-                <Data
-                tests={tests}
-                title="Some Test(s)..."
-                />
-            )}
-            <SavedSearch />
-            </div>
-    </main>
-    );
+        return (
+                <div>
+                    <h1>Results page</h1>
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <Data
+                    tests={tests}
+                    title="Some Test(s)..."
+                    />
+                )}
+                <SavedSearch />
+                </div>
+        );
 };
 
 export default Results;
