@@ -1,5 +1,5 @@
 import React from 'react';
-import './Data.css';
+import './data.css';
 
 const Data = ({ tests, title }) => {
   if (!tests.length) {

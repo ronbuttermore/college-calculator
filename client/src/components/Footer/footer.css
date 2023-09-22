@@ -1,3 +1,37 @@
 .footer {
-    
+    width: 100vw;
+    height: 4rem;
+    background: rgb(0, 110, 127);
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-weight: 300;
+    font-size: small;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+  
+a:active {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
 }

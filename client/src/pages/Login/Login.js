@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 
+import './Login.css';
+
 import Auth from '../../utils/auth';
 
 const Login = (props) => {
@@ -38,16 +40,16 @@ const Login = (props) => {
   };
 
   return (
-    <main>
-        <h4>Login</h4>
-        <div>
+    <main id='login'>
+        <h4 className='aboutTitle'>Login</h4>
+        <div className='aboutBars'>
         {data ? (
             <p>
             Success! You may now head{' '}
             <Link to="/">back to the homepage.</Link>
             </p>
         ) : (
-            <form onSubmit={handleFormSubmit}>
+            <form className='form' onSubmit={handleFormSubmit}>
             <input
                 className="form-input"
                 placeholder="Your email"

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Results.css';
 import { useQuery } from '@apollo/client';
-import Data from '../../components/Data/Data';
+import Data from '../../components/Data/data';
 import SavedSearch from '../../components/SavedSearch/SavedSearch';
 import { QUERY_TESTS } from '../../utils/queries';
 
