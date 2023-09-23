@@ -96,9 +96,9 @@ const Signup = () => {
     <>
       {success ? (
         <section>
-          <h1>Success!</h1>
-            <p>
-              <a href="#">Sign In</a>
+          <p>
+          Success! You may now head{' '}
+          <Link to="/">back to the homepage.</Link>
           </p>
         </section>
         ) : (
@@ -112,12 +112,15 @@ const Signup = () => {
                 <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
               </label>
               <input
+                className="form-input"
+                placeholder="Your username"
                 type="text"
+                name="username"
                 id="username"
                 ref={userRef}
                 autoComplete="off"
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
+                onChange={handleChange}
+                value={formState.name}
                 required
                 aria-invalid={validName ? "false" : "true"}
                 aria-describedby="uidnote"
@@ -137,10 +140,12 @@ const Signup = () => {
                 <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
               </label>
               <input
+                className="form-input"
                 type="password"
+                name="password"
                 id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
+                onChange={handleChange}
+                value={formState.password}
                 required
                 aria-invalid={validPwd ? "false" : "true"}
                 aria-describedby="pwdnote"
@@ -160,6 +165,7 @@ const Signup = () => {
                 <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
               </label>
               <input
+                className="form-input"
                 type="password"
                 id="confirm_pwd"
                 onChange={(e) => setMatchPwd(e.target.value)}
@@ -175,7 +181,7 @@ const Signup = () => {
                 Must match the first password input field.
               </p>
 
-              <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+              <button disabled={!validName || !validPwd || !validMatch ? true : false} type="submit">Sign Up</button>
             </form>
               <p>
                 Already registered?<br />
@@ -185,6 +191,11 @@ const Signup = () => {
                 </span>
               </p>
         </section>
+      )}
+      {error && (
+        <div>
+        {error.message}
+        </div>
       )}
     </>
   );
