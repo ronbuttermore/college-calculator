@@ -102,9 +102,9 @@ const Signup = () => {
           </p>
         </section>
         ) : (
-        <section>
+        <section className='form-section'>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign Up</h1>
+            <h1 className='form-title'>Welcome!</h1>
             <form onSubmit={handleFormSubmit}>
               <label htmlFor="username">
                 Username:
@@ -186,7 +186,7 @@ const Signup = () => {
                 Already registered?<br />
                 <span className="line">
                   {/*put router link here*/}
-                  <a href="#">Sign In</a>
+                  <a href="#">Log In</a>
                 </span>
               </p>
         </section>
