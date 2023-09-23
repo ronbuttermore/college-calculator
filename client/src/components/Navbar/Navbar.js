@@ -27,16 +27,7 @@ function Navbar() {
                 </>
               ) : (
                 <>
-                  <button className="login-btn" onClick={logout}>
-                    <Link to="/login">
-                      Login
-                    </Link>
-                  </button>
-                  <button className="signup-btn" onClick={logout}>
-                    <Link to="/signup">
-                      Signup
-                    </Link>
-                  </button>
+
                 </>
               )}
             </div>

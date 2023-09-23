@@ -219,10 +219,9 @@ const Signup = () => {
             </form>
               <p className='already-in'>
                 Already have an account?<br />
-                <span className="line">
-                  {/*put router link here*/}
-                  <a href="#">Log In</a>
-                </span>
+                <Link id='login-text' to="/login" className="line">
+                Log In
+                </Link>
               </p>
         </section>
       )}
