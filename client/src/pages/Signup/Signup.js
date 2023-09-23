@@ -104,7 +104,7 @@ const Signup = () => {
         ) : (
         <section>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Register</h1>
+            <h1>Sign Up</h1>
             <form onSubmit={handleFormSubmit}>
               <label htmlFor="username">
                 Username:
@@ -113,13 +113,12 @@ const Signup = () => {
               </label>
               <input
                 className="form-input"
-                placeholder="Your username"
                 type="text"
                 name="username"
                 id="username"
                 ref={userRef}
                 autoComplete="off"
-                onChange={handleChange}
+                onChange={(e) => setUser(e.target.value)}
                 value={formState.name}
                 required
                 aria-invalid={validName ? "false" : "true"}
@@ -144,8 +143,8 @@ const Signup = () => {
                 type="password"
                 name="password"
                 id="password"
-                onChange={handleChange}
-                value={formState.password}
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
                 required
                 aria-invalid={validPwd ? "false" : "true"}
                 aria-describedby="pwdnote"
