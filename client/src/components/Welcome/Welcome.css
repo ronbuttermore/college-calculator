@@ -1,0 +1,57 @@
+.welcome-section {
+    /* min-height: calc(100vh - 4rem); */
+    margin-top: 5rem;
+    /* margin: 2rem 0; */
+    width: 100%;
+    /* max-width: 420px; */
+    min-height: 400px;
+    padding: 1rem;
+    background-image: url("../../assets/Welcome-Background.png");
+    /* background-image: linear-gradient(#00C9FF, #0076AA); */
+    background-position: center bottom;
+    background-size: auto 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro-text, .desc-text {
+    color: white;
+    width: 80vw;
+    margin: 1.5rem auto;
+}
+
+.intro-text {
+    font-size: 30px;
+}
+
+.desc-text {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.login-btn {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: white;
+    margin: 1.5rem auto 0 auto;
+}
+
+#login-text {
+    color: #0076AA;
+}
+
+.sign-up {
+    color: white;
+    text-align: center;
+    margin: 1rem;
+}
+
+.line {
+    display: inline-block;
+    font-weight: 600;
+}

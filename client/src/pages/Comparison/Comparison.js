@@ -1,6 +1,6 @@
 import React from 'react';
 import './Comparison.css';
-import Data from '../../components/Data/Data';
+import Data from '../../components/Data/data';
 import SavedSearch from '../../components/SavedSearch/SavedSearch';
 
 function Comparison() {
