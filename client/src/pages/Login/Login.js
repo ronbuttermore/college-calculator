@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "./api/axios";
+
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 
@@ -41,8 +45,8 @@ const Login = (props) => {
 
   return (
     <main id='login'>
-        <h4 className='aboutTitle'>Login</h4>
-        <div className='aboutBars'>
+        <h4 className='loginTitle'>Login</h4>
+        <div className='loginSection'>
         {data ? (
             <p>
             Success! You may now head{' '}
