@@ -3,35 +3,40 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
+import logo from "../../assets/logo.png"
+
 function Navbar() {
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
       };
       return (
-        <navbar>
+        <navbar className="navbar">
             <div>
               <Link to="/">
-                <h1>Homepage</h1>
+                <img src={logo} alt="logo" className="logo"/>
               </Link>
             </div>
             <div>
               {Auth.loggedIn() ? (
                 <>
-                  <span>Hey there, {Auth.getProfile().data.username}!</span>
-                  <button onClick={logout}>
+                  <span id="loggedin-name" >Hey there, {Auth.getProfile().data.username}!</span>
+                  <button className="logout-btn" onClick={logout}>
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link to="/login">
-                    Login
-                  </Link>
-                  <br />
-                  <Link to="/signup">
-                    Signup
-                  </Link>
+                  <button className="login-btn" onClick={logout}>
+                    <Link to="/login">
+                      Login
+                    </Link>
+                  </button>
+                  <button className="signup-btn" onClick={logout}>
+                    <Link to="/signup">
+                      Signup
+                    </Link>
+                  </button>
                 </>
               )}
             </div>
