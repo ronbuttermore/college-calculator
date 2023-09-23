@@ -182,8 +182,8 @@ const Signup = () => {
 
               <button disabled={!validName || !validPwd || !validMatch ? true : false} type="submit">Sign Up</button>
             </form>
-              <p>
-                Already registered?<br />
+              <p className='already-in'>
+                Already have an account?<br />
                 <span className="line">
                   {/*put router link here*/}
                   <a href="#">Log In</a>
