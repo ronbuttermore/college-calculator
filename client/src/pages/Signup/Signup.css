@@ -112,3 +112,7 @@ button {
     display: inline-block;
     font-weight: 600;
 }
+
+#already-login-text {
+    color: white;
+}

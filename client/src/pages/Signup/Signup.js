@@ -219,7 +219,7 @@ const Signup = () => {
             </form>
               <p className='already-in'>
                 Already have an account?<br />
-                <Link id='login-text' to="/login" className="line">
+                <Link id='already-login-text' to="/login" className="line">
                 Log In
                 </Link>
               </p>
