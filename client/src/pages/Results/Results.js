@@ -1,6 +1,6 @@
 import React from 'react';
 import './Results.css';
-import Data from '../../components/Data/Data';
+import Data from '../../components/Data/data';
 import UserInput from '../../components/Forms/UserInput';
 
 function Results() {
