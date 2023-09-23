@@ -11,16 +11,22 @@ import './Signup.css';
 import Auth from '../../utils/auth';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/signup';
 
 const Signup = () => {
   const userRef = useRef();
+  const emailRef = useRef();
   const errRef = useRef();
 
   const [user, setUser] = useState('');
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
 
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
@@ -40,6 +46,10 @@ const Signup = () => {
   useEffect(() => {
       setValidName(USER_REGEX.test(user));
   }, [user])
+
+  useEffect(() => {
+      setValidEmail(EMAIL_REGEX.test(email));
+  }, [email])
 
   useEffect(() => {
       setValidPwd(PWD_REGEX.test(pwd));
@@ -133,6 +143,31 @@ const Signup = () => {
                 Letters, numbers, underscores, hyphens allowed.
               </p>
 
+              <label htmlFor="email">
+                Email:
+                <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
+                <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
+              </label>
+              <input
+                className="form-input"
+                type="email"
+                name="email"
+                id="email"
+                ref={emailRef}
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+                aria-invalid={validEmail ? "false" : "true"}
+                aria-describedby="emailnote"
+                onFocus={() => setEmailFocus(true)}
+                onBlur={() => setEmailFocus(false)}
+              />
+              <p id="emailnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
+                <FontAwesomeIcon icon={faInfoCircle} />
+                Must be a valid email address.
+              </p>
+
               <label htmlFor="password">
                 Password:
                 <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
@@ -180,7 +215,7 @@ const Signup = () => {
                 Must match the first password input field.
               </p>
 
-              <button disabled={!validName || !validPwd || !validMatch ? true : false} type="submit">Sign Up</button>
+              <button disabled={!validName || !validPwd || !validMatch || !validEmail ? true : false} type="submit">Sign Up</button>
             </form>
               <p className='already-in'>
                 Already have an account?<br />
@@ -191,11 +226,11 @@ const Signup = () => {
               </p>
         </section>
       )}
-      {error && (
+      {/* {error && (
         <div>
         {error.message}
         </div>
-      )}
+      )} */}
     </>
   );
 };
