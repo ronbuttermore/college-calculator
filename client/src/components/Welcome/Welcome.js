@@ -1,10 +1,11 @@
 import React from 'react';
 import './Welcome.css'
+import Auth from '../../utils/auth';
 
 function Welcome() {
     return (
         <div>
-            <h1>Here's where the welcome will display</h1>
+            <p>Hey there, {Auth.getProfile().data.username}!</p>
         </div>
     );
 };
