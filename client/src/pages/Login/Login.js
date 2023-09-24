@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
+import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import './Login.css';
 
@@ -39,9 +41,10 @@ const Login = (props) => {
     });
   };
 
+  
+
   return (
     <div id='login'>
-        <h4 className='loginTitle'>Login</h4>
         <div className='loginSection'>
         {data ? (
             <p>
@@ -49,7 +52,12 @@ const Login = (props) => {
             <Link to="/">back to the homepage.</Link>
             </p>
         ) : (
+            <section className='form-section'>
+            <h4 className='form-title'>Login:</h4>
             <form className='form' onSubmit={handleFormSubmit}>
+            <label htmlFor="email">
+                Username:
+            </label>
             <input
                 className="form-input"
                 placeholder="Your email"
@@ -58,6 +66,9 @@ const Login = (props) => {
                 value={formState.email}
                 onChange={handleChange}
             />
+            <label htmlFor="email">
+                Password:
+            </label>
             <input
                 className="form-input"
                 placeholder="******"
@@ -72,6 +83,7 @@ const Login = (props) => {
                 Submit
             </button>
             </form>
+            </section>
         )}
 
         {error && (
