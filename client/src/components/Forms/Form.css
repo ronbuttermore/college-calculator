@@ -1,0 +1,15 @@
+#inputsearch {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+}
+
+#inputsearchbtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+    margin: 1rem;
+}

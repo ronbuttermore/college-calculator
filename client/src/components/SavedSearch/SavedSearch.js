@@ -1,9 +1,10 @@
 import React from 'react';
+import './SavedSearch.css';
 
 function SavedSearch() {
     return (
-        <div>
-            <p>Here's where saved searches will show up</p>
+        <div id='savedSearches'>
+            <p id='placeholder'>Here's where saved searches will show up</p>
         </div>
     );
 };

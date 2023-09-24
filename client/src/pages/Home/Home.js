@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css';
-import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import Results from '../Results/Results'
 import Navbar from '../../components/Navbar/Navbar';

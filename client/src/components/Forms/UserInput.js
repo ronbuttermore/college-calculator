@@ -3,9 +3,10 @@ import './Form.css';
 
 const UserInput = () => {
     return (
-        <div>
+        <div id='inputsearch'>
             <h3>Here's where the user input form will be</h3>
-            <button>Submit</button>
+            <br />
+            <button id='inputsearchbtn'>Submit</button>
         </div>
     );
 };

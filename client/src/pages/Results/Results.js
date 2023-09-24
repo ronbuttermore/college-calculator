@@ -11,18 +11,20 @@ function Results() {
         const searches = data?.searches || [];
 
         return (
-        <div id='landingpage'>
-                <h1>Results page</h1>
-                <UserInput />
-                {loading ? (
-                        <div>Loading...</div>
-                ) : (
-                        <Data
-                                searches={searches}
-                                title="Here is your outlook: "
-                        />
-                )}
+        <div id="landingpage">
+                <div id='content'>
+                        <h1>Results page</h1>
+                        <UserInput />
+                        {loading ? (
+                                <div>Loading...</div>
+                        ) : (
+                                <Data
+                                        searches={searches}
+                                        title="Here is your outlook: "
+                                />
+                        )}
                 </div>
+        </div>
         );
 };
 
