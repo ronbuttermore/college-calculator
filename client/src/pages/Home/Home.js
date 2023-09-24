@@ -6,10 +6,6 @@ import Welcome from '../../components/Welcome/Welcome';
 import SavedSearch from '../../components/SavedSearch/SavedSearch';
 
 function Home() {
-    const logout = (event) => {
-        event.preventDefault();
-        Auth.logout();
-      };
     return (
         <div>
             <div>
