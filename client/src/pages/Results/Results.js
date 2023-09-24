@@ -6,7 +6,7 @@ import UserInput from '../../components/Forms/UserInput';
 function Results() {
 
         return (
-                <div>
+                <div id='landingpage'>
                     <h1>Results page</h1>
                     <UserInput />
                     <Data />

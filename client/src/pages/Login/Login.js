@@ -40,7 +40,7 @@ const Login = (props) => {
   };
 
   return (
-    <main id='login'>
+    <div id='login'>
         <h4 className='loginTitle'>Login</h4>
         <div className='loginSection'>
         {data ? (
@@ -80,7 +80,7 @@ const Login = (props) => {
             </div>
         )}
         </div>
-    </main>
+    </div>
   );
 };
 

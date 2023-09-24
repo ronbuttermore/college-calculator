@@ -112,3 +112,8 @@ button {
     display: inline-block;
     font-weight: 600;
 }
+
+#login {
+    padding-top: 50px;
+    margin-top: 50px;
+}
