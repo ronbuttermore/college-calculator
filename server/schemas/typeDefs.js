@@ -6,15 +6,21 @@ type User {
   username: String
   email: String
   password: String
-  tests: [Test]!
+  searches: [Search]!
 }
 
-type Test {
+type Search {
     _id: ID
-    name: String
-    testnumber: Int
-    testok: Boolean
-    savedBy: String
+    university: String
+    degree: String
+    noyears: Int
+    tuition: Int
+    scholarships: Int
+    loanAmount: Int
+    loanInterest: Int
+    loanTerm: Int
+    projectedSalary: Int
+    searchedBy: String
   }
 
   type Auth {
@@ -25,16 +31,16 @@ type Test {
   type Query {
     users: [User]
     user(username: String!): User
-    tests(username: String): [Test]
-    test(testId: ID!): Test
+    searches(username: String): [Search]
+    search(searchId: ID!): Search
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addTest(name: String!, savedBy: String!): Test
-    removeTest(testID: ID!): Test
+    addSearch(name: String!, savedBy: String!): Search
+    removeSearch(searchId: ID!): Search
   }
 `;
 
