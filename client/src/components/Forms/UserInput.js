@@ -6,7 +6,26 @@ import { QUERY_SEARCHES } from '../../utils/queries';
 
 const UserInput = () => {
 
-    const [submitState, setSubmitState] = useState(false);
+    const [submitState, setSubmitState] = useState({
+        university: "",
+        degree: "",
+        years: "",
+        tuition: "",
+        scholarships: "",
+        loanAmount: "",
+        loanInterest: "",
+        loanTerm: "",
+        salary:""
+    });
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setSubmitState ((prev) => {
+            return {...prev, [name]: value}
+        })
+    };
+
     const loadData = (event) => {
         event.preventDefault();
         setSubmitState(true);
@@ -17,7 +36,7 @@ const UserInput = () => {
 
     return (
         <div id='inputsearch'>
-            <form>
+            <form onSubmit={loadData}>
                 <h3>University</h3> <textarea></textarea>
                 <h3>Degree</h3> <textarea></textarea>
                 <h3>No. Years</h3> <input type="text" pattern= "[0-9]*"></input>
@@ -29,7 +48,7 @@ const UserInput = () => {
                 <h3>Projected Salary</h3> <input type="text" pattern= "[0-9]*"></input>
             </form>
             <br />
-            <button id='inputsearchbtn' onClick={loadData} >Submit</button>
+            <button id='inputsearchbtn' onClick={loadData} >Show Results</button>
             {submitState ? (
                 <Data
                 searches={searches}
