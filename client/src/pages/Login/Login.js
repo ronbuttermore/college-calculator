@@ -83,6 +83,12 @@ const Login = (props) => {
                 Submit
             </button>
             </form>
+            <p className='already-in'>
+                Don't have an account yet?<br />
+                <Link id='already-login-text' to="/signup" className="line">
+                Sign Up
+                </Link>
+              </p>
             </section>
         )}
 

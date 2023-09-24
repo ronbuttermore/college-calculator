@@ -16,13 +16,11 @@ function Home() {
             <div>
               {Auth.loggedIn() ? (
                 <>
-                  <Navbar />
                   <Results />
                   <SavedSearch />
                 </>
               ) : (
                 <>
-                  <Navbar />
                   <Welcome />
                 </>
               )}

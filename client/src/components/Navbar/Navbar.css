@@ -1,6 +1,6 @@
 .navbar {
     width: 100vw;
-    height: 10.25vh;
+    height: 10vh;
     background: white;
     color: #0076AA;
     text-decoration: none;
@@ -11,9 +11,7 @@
     margin: 0 auto;
     padding: 2rem;
     justify-content: space-between;
-    position: fixed;
-    top: 0;
-    z-index: 3;
+    position: static;
 }
 
 .logo {
