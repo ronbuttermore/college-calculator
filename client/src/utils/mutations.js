@@ -24,9 +24,9 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_TEST = gql`
-  mutation addTest($name: String!, $savedBy: String!) {
-    addThought(name: $name, savedBy: $savedBy) {
+export const ADD_SEARCH = gql`
+  mutation addSearch($university: String!, $searchedBy: String!) {
+    addSearch(university: $university, searchedBy: $searchedBy) {
       _id
       thoughtText
       thoughtAuthor
