@@ -1,26 +1,50 @@
 [
     {
-        "name": "test1",
-        "testnumber": 1,
-        "testok": true,
-        "savedBy": "ronbuttermore"
+        "university": "University of Denver",
+        "degree": "Computer Science",
+        "noyears": 4,
+        "tuition": 60000,
+        "scholarships": 10000,
+        "loanAmount": 50000,
+        "loanInterest": 4,
+        "loanTerm": 10,
+        "projectedSalary": 80000,
+        "searchedBy": "ronbuttermore"
     },
     {
-        "name": "test2",
-        "testnumber": 2,
-        "testok": true,
-        "savedBy": "danielford"
+        "university": "University of Denver",
+        "degree": "Computer Science",
+        "noyears": 4,
+        "tuition": 60000,
+        "scholarships": 10000,
+        "loanAmount": 50000,
+        "loanInterest": 4,
+        "loanTerm": 10,
+        "projectedSalary": 80000,
+        "searchedBy": "danielford"
     },
     {
-        "name": "test3",
-        "testnumber": 3,
-        "testok": true,
-        "savedBy": "renrojas"
+        "university": "University of Denver",
+        "degree": "Computer Science",
+        "noyears": 4,
+        "tuition": 60000,
+        "scholarships": 10000,
+        "loanAmount": 50000,
+        "loanInterest": 4,
+        "loanTerm": 10,
+        "projectedSalary": 80000,
+        "searchedBy": "sarahpaterson"
     },
     {
-        "name": "test4",
-        "testnumber": 4,
-        "testok": true,
-        "savedBy": "sarahpaterson"
+        "university": "University of Denver",
+        "degree": "Computer Science",
+        "noyears": 4,
+        "tuition": 60000,
+        "scholarships": 10000,
+        "loanAmount": 50000,
+        "loanInterest": 4,
+        "loanTerm": 10,
+        "projectedSalary": 80000,
+        "searchedBy": "renrojas"
     }
 ]

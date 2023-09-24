@@ -1,22 +1,22 @@
 const db = require('../config/connection');
-const { Test, User } = require('../models');
-const testData = require('./testData.json');
+const { Search, User } = require('../models');
+const searchData = require('./searchData.json');
 const userData = require('./userData.json');
 
 db.once('open', async() => {
     try {
-        await Test.deleteMany({});
+        await Search.deleteMany({});
         await User.deleteMany({});
     
         await User.create(userData);
     
-        for (let i = 0; i < testData.length; i++) {
-          const { _id, savedBy } = await Test.create(testData[i]);
+        for (let i = 0; i < searchData.length; i++) {
+          const { _id, searchedBy } = await Search.create(searchData[i]);
           const user = await User.findOneAndUpdate(
-            { username: savedBy },
+            { username: searchedBy },
             {
               $addToSet: {
-                tests: _id,
+                searches: _id,
               },
             }
           );

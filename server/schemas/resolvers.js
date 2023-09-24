@@ -1,25 +1,25 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Test } = require('../models');
+const { User, Search } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('tests');
+      return User.find().populate('searches');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('tests');
+      return User.findOne({ username }).populate('searches');
     },
-    tests: async (parent, { username }) => {
+    searches: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Test.find(params).sort({ createdAt: -1 });
+      return Search.find(params).sort({ createdAt: -1 });
     },
-    test: async (parent, { testId }) => {
-      return Test.findOne({ _id: testId });
+    search: async (parent, { searchId }) => {
+      return Search.findOne({ _id: searchId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('searches');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -45,17 +45,17 @@ const resolvers = {
       return { token, user };
     },
 
-    addTest: async (parent, { name, savedBy }) => {
-      const test = await Test.create({ name, savedBy });
+    addSearch: async (parent, { name, searchedBy }) => {
+      const search = await Search.create({ name, searchedBy });
       await User.findOneAndUpdate(
-        { username: savedBy },
-        { $addToSet: { test: test._id } }
+        { username: searchedBy },
+        { $addToSet: { search: search._id } }
       );
-      return test;
+      return search;
     },
 
-    removeTest: async (parent, { testId }) => {
-      return Test.findOneAndDelete({ _id: testId });
+    removeSearch: async (parent, { searchId }) => {
+      return Search.findOneAndDelete({ _id: searchId });
     },
   }
 };

@@ -5,7 +5,7 @@ const searchSchema = new Schema(
       university: {
         type: String,
         required: true,
-        unique: true,
+        unique: false,
         trim: true,
         minlength: 1,
         maxlength: 200
@@ -48,8 +48,7 @@ const searchSchema = new Schema(
         required: true
       },
       searchedBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: String
       }
     }
   );

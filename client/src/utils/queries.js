@@ -6,23 +6,37 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      searches {
         _id
-        thoughtText
-        createdAt
+        university
+        degree
+        noyears
+        tuition
+        scholarships
+        loanAmount
+        loanInterest
+        loanTerm
+        projectedSalary
+        searchedBy
       }
     }
   }
 `;
 
-export const QUERY_TESTS = gql`
-  query getTest {
-    tests {
+export const QUERY_SEARCHES = gql`
+  query getSearch {
+    searches {
       _id
-      name
-      savedBy
-      testnumber
-      testok
+      university
+      degree
+      noyears
+      tuition
+      scholarships
+      loanAmount
+      loanInterest
+      loanTerm
+      projectedSalary
+      searchedBy
     }
   }
 `;
