@@ -20,7 +20,6 @@ function Navbar() {
             <div>
               {Auth.loggedIn() ? (
                 <>
-                  <span id="loggedin-name" >Hey there, {Auth.getProfile().data.username}!</span>
                   <button className="logout-btn" onClick={logout}>
                     Logout
                   </button>

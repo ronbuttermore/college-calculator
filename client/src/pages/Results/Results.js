@@ -4,6 +4,7 @@ import Data from '../../components/Data/data';
 import UserInput from '../../components/Forms/UserInput';
 import { useQuery } from '@apollo/client';
 import { QUERY_SEARCHES } from '../../utils/queries';
+import Auth from '../../utils/auth';
 
 function Results() {
 
@@ -13,14 +14,14 @@ function Results() {
         return (
         <div id="landingpage">
                 <div id='content'>
-                        <h1>Results page</h1>
+                        <span className="loggedin-name" >Welcome {Auth.getProfile().data.username}!</span>
                         <UserInput />
                         {loading ? (
                                 <div>Loading...</div>
                         ) : (
                                 <Data
                                         searches={searches}
-                                        title="Here is your outlook: "
+                                        title="(College Name) Results: "
                                 />
                         )}
                 </div>
