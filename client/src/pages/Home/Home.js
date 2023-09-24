@@ -2,7 +2,6 @@ import React from 'react';
 import './Home.css';
 import Auth from '../../utils/auth';
 import Results from '../Results/Results'
-import Navbar from '../../components/Navbar/Navbar';
 import Welcome from '../../components/Welcome/Welcome';
 import SavedSearch from '../../components/SavedSearch/SavedSearch';
 
