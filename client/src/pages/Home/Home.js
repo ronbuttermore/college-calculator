@@ -18,21 +18,13 @@ function Home() {
               {Auth.loggedIn() ? (
                 <>
                   <Navbar />
-                  <Welcome />
                   <Results />
                   <SavedSearch />
                 </>
               ) : (
                 <>
-                <p>Logo here</p>
-                <p>Banner with buttons to login and signup</p>
-                  <Link to="/login">
-                    Login
-                  </Link>
-                  <br />
-                  <Link to="/signup">
-                    Signup
-                  </Link>
+                  <Navbar />
+                  <Welcome />
                 </>
               )}
             </div>

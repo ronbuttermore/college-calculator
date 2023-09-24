@@ -22,7 +22,7 @@ const userSchema = new Schema({
   tests: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Test',
+      ref: 'Search',
     },
   ],
 });
