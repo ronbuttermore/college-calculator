@@ -112,9 +112,9 @@ const Signup = () => {
           </p>
         </section>
         ) : (
-        <section className='form-section'>
-            <h1 className='form-title'>Welcome!</h1>
-            <form onSubmit={handleFormSubmit}>
+        <section id='signup-form-section'>
+            <h1 className='signup-form-title'>Welcome!</h1>
+            <form className='signup-form' onSubmit={handleFormSubmit}>
               <label htmlFor="username">
                 Username:
                 <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />

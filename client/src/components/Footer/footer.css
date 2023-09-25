@@ -1,37 +1,37 @@
 .footer {
     width: 100vw;
-    height: 5vh;
-    background: #0076AA;
-    color: white;
+    height: 4rem;
+    background: white;
+    color: #0076AA;
     text-decoration: none;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    font-weight: 300;
+    font-weight: 500;
     font-size: small;
 }
 
 a:link {
-    color: white;
+    color: #0076AA;
     background-color: transparent;
     text-decoration: none;
 }
   
 a:visited {
-    color: white;
+    color: #0076AA;
     background-color: transparent;
     text-decoration: none;
 }
   
 a:hover {
-    color: white;
+    color: #0076AA;
     background-color: transparent;
     text-decoration: underline;
 }
   
 a:active {
-    color: white;
+    color: #0076AA;
     background-color: transparent;
     text-decoration: underline;
 }
