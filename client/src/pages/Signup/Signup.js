@@ -99,7 +99,7 @@ const Signup = () => {
           setErrMsg('Registration Failed')
       }
       errRef.current.focus();
-  }
+    }
   };
 
   return (
@@ -113,7 +113,6 @@ const Signup = () => {
         </section>
         ) : (
         <section className='form-section'>
-          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1 className='form-title'>Welcome!</h1>
             <form onSubmit={handleFormSubmit}>
               <label htmlFor="username">
@@ -127,7 +126,7 @@ const Signup = () => {
                 name="username"
                 id="username"
                 ref={userRef}
-                autoComplete="off"
+                // autoComplete="off"
                 onChange={(e) => setUser(e.target.value)}
                 value={formState.name}
                 required
@@ -154,7 +153,7 @@ const Signup = () => {
                 name="email"
                 id="email"
                 ref={emailRef}
-                autoComplete="off"
+                // autoComplete="off"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 required
@@ -223,6 +222,8 @@ const Signup = () => {
                 Log In
                 </Link>
               </p>
+
+              <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
         </section>
       )}
       {/* {error && (
