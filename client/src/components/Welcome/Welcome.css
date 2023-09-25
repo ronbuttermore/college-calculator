@@ -1,14 +1,13 @@
 .welcome-section {
-    /* min-height: calc(100vh - 4rem); */
     width: 100%;
-    height: 85vh;
+    height:  500px;
     /* max-width: 420px; */
     min-height: 400px;
     padding: 1rem;
     background-image: url("../../assets/Welcome-Background.png");
     /* background-image: linear-gradient(#00C9FF, #0076AA); */
     background-position: center bottom;
-    background-size: auto 100%;
+    background-size: cover;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -53,4 +52,8 @@
 .line {
     display: inline-block;
     font-weight: 600;
+}
+
+#signup-link {
+    color: white;
 }
