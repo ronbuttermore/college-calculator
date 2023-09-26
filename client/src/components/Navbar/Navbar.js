@@ -11,7 +11,7 @@ function Navbar() {
         Auth.logout();
       };
       return (
-        <navbar className="navbar">
+        <div className="navbar">
             <div>
               <Link to="/">
                 <img src={logo} alt="logo" className="logo"/>
@@ -30,7 +30,7 @@ function Navbar() {
                 </>
               )}
             </div>
-        </navbar>
+        </div>
       );
 };
 
