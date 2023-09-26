@@ -9,13 +9,14 @@
 
 #saved-searches {
     margin: 0 auto;
-    min-height: calc(100vh - 4rem);
+    /* min-height: calc(100vh - 4rem); */
+    /* min-height: 20rem; */
     width: 100vw;
     max-width: 60rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     text-align: center;
     padding: 0 1rem;
 }
@@ -26,23 +27,17 @@
     color: #008416;
 }
 
-.worksDesc {
-    font-weight: 300;
-    font-size: 1rem;
-    max-width: 45rem;
-}
-
-.worksImgs {
+/* .saved-search-box {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     width: 100vw;
     max-width: 65rem;
-}
+} */
 
-.worksImg {
-    object-fit: cover;
-    height: 20rem;
-    margin: 0.5rem;
-}
+/* .saved-box-title {
+    font-weight: 300;
+    font-size: 1rem;
+    max-width: 45rem;
+} */
