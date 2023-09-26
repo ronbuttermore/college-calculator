@@ -11,7 +11,7 @@ const Login = (props) => {
   const errRef = useRef();
   const [errMsg, setErrMsg] = useState('');
 
-  const [pwd] = useState('');
+  const [password] = useState('');
   const [email] = useState('');
 
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -19,7 +19,7 @@ const Login = (props) => {
 
   useEffect(() => {
     setErrMsg('');
-}, [email, pwd])
+}, [email, password])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -48,6 +48,7 @@ const Login = (props) => {
           setErrMsg('Registration Failed')
       }
       errRef.current.focus();
+      // console.err(err)
     }
 
     setFormState({
@@ -70,7 +71,7 @@ const Login = (props) => {
             <section className='form-section'>
             <h4 className='form-title'>Welcome Back!</h4>
             <form className='form' onSubmit={handleFormSubmit}>
-            <label htmlFor="email">
+            <label className='login-label' htmlFor="email">
                 Email:
             </label>
             <input
@@ -81,7 +82,7 @@ const Login = (props) => {
                 value={formState.email}
                 onChange={handleChange}
             />
-            <label htmlFor="email">
+            <label className='login-label' htmlFor="email">
                 Password:
             </label>
             <input

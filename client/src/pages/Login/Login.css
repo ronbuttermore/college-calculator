@@ -59,18 +59,8 @@ button {
   font-size: 24px;
 }
 
-.instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #00698E;
-    color: #fff;
-    padding: 0.5rem;
-    position: relative;
-    bottom: -10px;
-}
-
-.instructions > svg {
-    margin-right: 0.25rem;
+.login-label {
+    color: white;
 }
 
 .offscreen {
