@@ -10,8 +10,6 @@ function SavedSearch() {
         alignItems: "center",
         justifyContent: "center",
         flexWrap: "wrap",
-        // margin: "1rem 0",
-        // padding: "0.5rem",
     }
 
     const savedSearchStyle = {
@@ -23,28 +21,18 @@ function SavedSearch() {
 
     const boxTitleStyle = {
         display: "flex",
-        // flexDirection: "row",
-        // alignItems: "center",
-        // textAlign: "center",
-        // justifyContent: "space-between",
         justifyContent: "center",
         backgroundColor: "#008416",
-        // color: "white",
         borderRadius: "1rem 1rem 0 0",
         padding: "1rem 0.5rem",
-        // maxWidth: "50vw",
-        // width: "25rem",
-        
     }
 
     const deleteStyle = {
         margin: "0 1rem",
-        // justifyContent: "left",
     }
 
     const checkboxStyle = {
         margin: "0 1rem",
-        // justifyContent: "right",
     }
 
     const uiniversityTitleStyle = {
@@ -79,147 +67,7 @@ function SavedSearch() {
                 <div className='saved-search-box' style={savedSearchStyle}>
                     <div className='saved-box-title' style={boxTitleStyle}>
                         <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
-                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>UC Denver</h4>
-                        <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
-                        <br></br>
-                        {checked ? (
-                            <div>
-                                {/* Checkbox is checked.  */}
-                            </div>
-                        ) : (
-                            <div>
-                                {/* Checkbox is not checked. */}
-                            </div>
-                        )}
-                    </div>
-                    <div style={boxContnetStyle}>
-                        <p style={infoStyle}>Degree: Degree Name
-                            <br /> No. Years: 4
-                            <br /> Tution: $00,000.00
-                        </p>
-                        <p style={infoStyle}>Scholarship: $00,000.00
-                            <br /> Loan Amount: $00,000.00
-                            <br /> Loan Interest: 0%
-                        </p>
-                    </div>
-                </div>
-                {/* second box sample */}
-                <div className='saved-search-box' style={savedSearchStyle}>
-                    <div className='saved-box-title' style={boxTitleStyle}>
-                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
-                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>Colorado State University</h4>
-                        <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
-                        <br></br>
-                        {checked ? (
-                            <div>
-                                {/* Checkbox is checked.  */}
-                            </div>
-                        ) : (
-                            <div>
-                                {/* Checkbox is not checked. */}
-                            </div>
-                        )}
-                    </div>
-                    <div style={boxContnetStyle}>
-                        <p style={infoStyle}>Degree: Degree Name
-                            <br /> No. Years: 4
-                            <br /> Tution: $00,000.00
-                        </p>
-                        <p style={infoStyle}>Scholarship: $00,000.00
-                            <br /> Loan Amount: $00,000.00
-                            <br /> Loan Interest: 0%
-                        </p>
-                    </div>
-                </div>
-                {/* third box sample */}
-                <div className='saved-search-box' style={savedSearchStyle}>
-                    <div className='saved-box-title' style={boxTitleStyle}>
-                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
-                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>Colorado Mesa University</h4>
-                        <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
-                        <br></br>
-                        {checked ? (
-                            <div>
-                                {/* Checkbox is checked.  */}
-                            </div>
-                        ) : (
-                            <div>
-                                {/* Checkbox is not checked. */}
-                            </div>
-                        )}
-                    </div>
-                    <div style={boxContnetStyle}>
-                        <p style={infoStyle}>Degree: Degree Name
-                            <br /> No. Years: 4
-                            <br /> Tution: $00,000.00
-                        </p>
-                        <p style={infoStyle}>Scholarship: $00,000.00
-                            <br /> Loan Amount: $00,000.00
-                            <br /> Loan Interest: 0%
-                        </p>
-                    </div>
-                </div>
-                {/* fourth box sample */}
-                <div className='saved-search-box' style={savedSearchStyle}>
-                    <div className='saved-box-title' style={boxTitleStyle}>
-                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
-                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>UC Bolder</h4>
-                        <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
-                        <br></br>
-                        {checked ? (
-                            <div>
-                                {/* Checkbox is checked.  */}
-                            </div>
-                        ) : (
-                            <div>
-                                {/* Checkbox is not checked. */}
-                            </div>
-                        )}
-                    </div>
-                    <div style={boxContnetStyle}>
-                        <p style={infoStyle}>Degree: Degree Name
-                            <br /> No. Years: 4
-                            <br /> Tution: $00,000.00
-                        </p>
-                        <p style={infoStyle}>Scholarship: $00,000.00
-                            <br /> Loan Amount: $00,000.00
-                            <br /> Loan Interest: 0%
-                        </p>
-                    </div>
-                </div>
-                {/* fifth box sample */}
-                <div className='saved-search-box' style={savedSearchStyle}>
-                    <div className='saved-box-title' style={boxTitleStyle}>
-                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
-                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>UC Colorado Springs</h4>
-                        <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
-                        <br></br>
-                        {checked ? (
-                            <div>
-                                {/* Checkbox is checked.  */}
-                            </div>
-                        ) : (
-                            <div>
-                                {/* Checkbox is not checked. */}
-                            </div>
-                        )}
-                    </div>
-                    <div style={boxContnetStyle}>
-                        <p style={infoStyle}>Degree: Degree Name
-                            <br /> No. Years: 4
-                            <br /> Tution: $00,000.00
-                        </p>
-                        <p style={infoStyle}>Scholarship: $00,000.00
-                            <br /> Loan Amount: $00,000.00
-                            <br /> Loan Interest: 0%
-                        </p>
-                    </div>
-                </div>
-                {/* sixth box sample */}
-                <div className='saved-search-box' style={savedSearchStyle}>
-                    <div className='saved-box-title' style={boxTitleStyle}>
-                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
-                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>Colorado College</h4>
+                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>University Name</h4>
                         <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
                         <br></br>
                         {checked ? (
