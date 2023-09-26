@@ -11,7 +11,7 @@ body {
     background: white;
     color: rgb(15, 15, 15);
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .App {

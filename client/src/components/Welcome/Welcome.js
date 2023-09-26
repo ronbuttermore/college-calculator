@@ -14,8 +14,8 @@ function Welcome() {
             </button>
             <p className='sign-up'>
                 Or &nbsp;
-                <Link to="/signup" className="line">
-                  <a href="#">Sign Up</a>
+                <Link to="/signup" className="line" id='signup-link'>
+                  Sign Up
                   </Link>
                   &nbsp; to continue
             </p>

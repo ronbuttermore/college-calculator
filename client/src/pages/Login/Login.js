@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
@@ -8,8 +8,18 @@ import './Login.css';
 import Auth from '../../utils/auth';
 
 const Login = (props) => {
+  const errRef = useRef();
+  const [errMsg, setErrMsg] = useState('');
+
+  const [pwd] = useState('');
+  const [email] = useState('');
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  useEffect(() => {
+    setErrMsg('');
+}, [email, pwd])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,8 +39,15 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
+    } catch (err) {
+      if (!err?.response) {
+          setErrMsg ('No Server Response');
+      } else if (err.response.status === 409) {
+          setErrMsg('Username Taken')
+      } else {
+          setErrMsg('Registration Failed')
+      }
+      errRef.current.focus();
     }
 
     setFormState({
@@ -51,14 +68,14 @@ const Login = (props) => {
             </p>
         ) : (
             <section className='form-section'>
-            <h4 className='form-title'>Login:</h4>
+            <h4 className='form-title'>Welcome Back!</h4>
             <form className='form' onSubmit={handleFormSubmit}>
             <label htmlFor="email">
-                Username:
+                Email:
             </label>
             <input
                 className="form-input"
-                placeholder="Your email"
+                // placeholder="Your email"
                 name="email"
                 type="email"
                 value={formState.email}
@@ -69,7 +86,7 @@ const Login = (props) => {
             </label>
             <input
                 className="form-input"
-                placeholder="******"
+                // placeholder="******"
                 name="password"
                 type="password"
                 value={formState.password}
@@ -86,15 +103,17 @@ const Login = (props) => {
                 <Link id='already-login-text' to="/signup" className="line">
                 Sign Up
                 </Link>
-              </p>
+            </p>
+
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             </section>
         )}
 
-        {error && (
+        {/* {error && (
             <div>
             {error.message}
             </div>
-        )}
+        )} */}
         </div>
     </div>
   );
