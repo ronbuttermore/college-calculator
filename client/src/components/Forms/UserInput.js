@@ -27,8 +27,10 @@ const UserInput = () => {
         projectedSalary:""
     });
 
+
     const handleChange = (e) => {
         const {name, value} = e.target
+        console.log(value)
         setSubmitState ((prev) => {
             return {...prev, [name]: value}
         })

@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const searchSchema = new Schema(
+  
     {
       university: {
         type: String,
@@ -12,7 +13,7 @@ const searchSchema = new Schema(
       },
       degree: {
         type: String,
-        required: true,
+//        required: true,
         unique: false,
         trim: true,
         minlength: 1,
@@ -20,40 +21,40 @@ const searchSchema = new Schema(
       },
       noyears: {
         type: Number,
-        required: true,
+ //       required: true,
       },
       tuition: {
         type: Number,
-        required: true
+ //       required: true
       },
       scholarships: {
         type: Number,
-        required: false,
+ //       required: false,
         default: 0
       },
       loanAmount: {
         type: Number,
-        required: true
+ //       required: true
       },
       loanInterest: {
         type: Number,
-        required: true
+  //      required: true
       },
       loanTerm: {
         type: Number,
-        required: true
+  //      required: true
       },
       projectedSalary: {
         type: Number,
-        required: true
+  //      required: true
       },
-      searchedBy: {
-        type: String
-      }
+      // savedBy: {
+      //   type: String
+   //   }
     }
   );
   
-  const Search = model('Search', searchSchema);
+ // const Search = model('Search', searchSchema);
   
-  module.exports = Search;
+  module.exports = searchSchema;
   

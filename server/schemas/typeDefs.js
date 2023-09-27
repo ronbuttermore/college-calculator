@@ -6,12 +6,12 @@ type User {
   username: String
   email: String
   password: String
-  searches: [Search]!
+  searches: [Search]
 }
 
 type Search {
     _id: ID
-    university: String
+    university: String!
     degree: String
     noyears: Int
     tuition: Int
@@ -20,8 +20,22 @@ type Search {
     loanInterest: Int
     loanTerm: Int
     projectedSalary: Int
-    searchedBy: String
+    savedBy: String
   }
+
+  input SearchInput {
+    university: String!
+    degree: String
+    noyears: Int
+    tuition: Int
+    scholarships: Int
+    loanAmount: Int
+    loanInterest: Int
+    loanTerm: Int
+    projectedSalary: Int
+    savedBy: String
+  }
+
 
   type Auth {
     token: ID!
@@ -31,15 +45,15 @@ type Search {
   type Query {
     users: [User]
     user(username: String!): User
-    searches(username: String): [Search]
-    search(searchId: ID!): Search
+    #searches(username: String): [SearchInput]
+    #search(searchId: ID!): Search
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSearch(name: String!, savedBy: String!): Search
+    addSearch(searchData: SearchInput!): User
     removeSearch(searchId: ID!): Search
   }
 `;

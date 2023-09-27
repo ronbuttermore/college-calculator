@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const searchSchema = require('./Search');
 
 const userSchema = new Schema({
   username: {
@@ -19,12 +20,13 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  searches: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Search',
-    },
-  ],
+  searches: [searchSchema],
+  // searches: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Search',
+  //   },
+  // ],
 });
 
 userSchema.pre('save', async function (next) {
