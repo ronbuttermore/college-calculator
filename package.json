@@ -17,6 +17,8 @@
     "concurrently": "^7.0.0"
   },
   "dependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "plotly.js": "^2.26.1",
+    "react-plotly.js": "^2.6.0"
   }
 }
