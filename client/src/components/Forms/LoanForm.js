@@ -1,4 +1,8 @@
 import React from 'react';
+import './Form.css';
+import Data from '../Data/data';
+import { useQuery } from '@apollo/client';
+import { QUERY_SEARCHES } from '../../utils/queries';
 
 function LoanForm({
   loanAmount,
