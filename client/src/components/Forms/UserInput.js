@@ -43,8 +43,8 @@ const UserInput = () => {
     const searches = data?.searches || [];
 
     return (
-        <div id='inputsearch'>
-            <form onSubmit={loadData}>
+        <div >
+            <form id='inputsearch' onSubmit={loadData}>
                 <h3 className='form-name'>University</h3>
                 <input style={userFormStyle} type="text" name="university" onChange={handleChange}></input>
                 <h3 className='form-name'>Degree</h3>
