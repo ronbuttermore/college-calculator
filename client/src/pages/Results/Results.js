@@ -1,6 +1,6 @@
 import React from 'react';
 import './Results.css';
-import UserInput from '../../components/Forms/UserInput';
+// import UserInput from '../../components/Forms/UserInput';
 import Auth from '../../utils/auth';
 
 import Data from '../../components/Data/data'

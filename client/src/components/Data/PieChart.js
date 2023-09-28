@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 
+import './data.css';
+
 const PieChart = ({
   loanAmount,
   interestRate,
@@ -64,17 +66,16 @@ const PieChart = ({
         `Student Loan               ${((studentLoanPayment / (annualSalary / 12)) * 100).toFixed(2)}%     $${studentLoanPayment.toFixed(2)}`,
       ],
       values: [federalTax, takeHomePay, stateTax, studentLoanPayment],
+      hole: .3,
       type: 'pie',
       marker: {
-        colors: ['#27374D', '#526D82', '#9DB2BF', 'DDE6ED'],
+        colors: ['#0076AA', '#00FF30', '#00C9FF', '#FFF200'],
       },
     },
   ];
 
   const layout = {
-    title: `<b>Gross Monthly Pay $${(annualSalary / 12).toFixed(2)}</b> <br>
-    What does it really look like to repay your student loans? <br>
-    Based on current tax rates, here’s the repayment on your projected income.`,
+    title: `Gross Monthly Pay $${(annualSalary / 12).toFixed(2)}`,
     legend: {
       orientation: 'v', // Horizontal legend
       x: -2, // Adjust the x position as needed
@@ -86,21 +87,53 @@ const PieChart = ({
         color: '#000', // Legend text color
       },
     },
+    responsive: true,
+    useResizeHandler: true,
+    autosize: true,
+    width: '100%',
+    height: '100%'
   };
 
   const chartContainerStyle = {
-    border: '1px solid #ccc', // Thin border
-    borderRadius: '10px', // Rounded corners
-    boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
-    padding: '10px', // Add some padding to separate the chart from the container
+    border: "2px solid #BABABA", // Thin border
+    borderRadius: '2rem', // Rounded corners
+    // boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
+    // padding: '10px', // Add some padding to separate the chart from the container
     maxWidth: '800px', // Set a maximum width as needed
     margin: '20px auto', // Adjust the margin to position the container vertically and horizontally
     textAlign: 'center', // Center the chart within the container
   };
 
+  const dataTitleStyle = {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "#00A1CC",
+    borderRadius: "2rem 2rem 0 0",
+    padding: "1rem 0.5rem",
+    color: "white",
+    fontWeight: "400",
+  }
+
+  const dataSubtitleStyle = {
+    marginTop: "1rem",
+  }
+
+  const plotStyle = {
+    margin: "0.5rem",
+  }
+
   return (
     <div style={chartContainerStyle}>
-      <Plot data={data} layout={layout} />
+      <h1 style={dataTitleStyle}>Future Payment Responsiblity</h1>
+      <p style={dataSubtitleStyle}>What does it really look like to repay your student loans? <br />
+      Based on current tax rates, here’s the repayment on your projected income.</p>
+      <div style={plotStyle}>
+        <Plot 
+          data={data} 
+          layout={layout} 
+          useResizeHandler={true}
+        />
+      </div>
     </div>
   );
 };
