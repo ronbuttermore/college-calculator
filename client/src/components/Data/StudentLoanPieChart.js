@@ -51,7 +51,7 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     // },
     legend: {
       orientation: 'h', // Horizontal legend
-      x: 0, // Adjust the x position of the legend as needed
+      x: 0.1, // Adjust the x position of the legend as needed
       y: -0.1, // Adjust the y position of the legend as needed
       traceorder: 'normal', // Display legend items in the order they appear in the data array
       font: {
@@ -86,6 +86,14 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     fontSize: "25px"
   }
 
+  const dataContainerStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    alignContent: "center",
+    textAlign: "center",
+  }
+
   const plotStyle = {
     margin: "0.5rem",
     // marginTop: "-1rem",
@@ -93,34 +101,29 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
   }
 
   const dataContnetStyle = {
-    // display: "flex",
-    // flexDirection: "row",
-    // alignItems: "center",
-    // textAlign: "left",
     padding: "1rem",
-  }
-
-  const infoStyle = {
-    padding: "0 0.5rem",
     // fontSize: "small",
     fontWeight: "500",
-    lineHeight: "1.6"
+    lineHeight: "1.6",
+    margin: "auto",
   }
 
   return (
     <div style={chartContainerStyle}>
       <h1 style={dataTitleStyle}>Student Loan Details</h1>
-      <div style={plotStyle}>
-        <Plot data={data} layout={layout} />
-        <div style={dataContnetStyle}>
-          <p style={infoStyle}>
-            <strong>Monthly Payment:</strong> ${monthlyPayment.toFixed(2)} 
-            &nbsp;&nbsp;<strong>Total Principal:</strong> ${totalPrincipal.toFixed(2)} <br />
-            <strong>Total Interest:</strong> ${totalInterest.toFixed(2)} 
-            &nbsp;&nbsp;<strong>Total Payments:</strong> ${totalPayments.toFixed(2)} <br />
-            <strong>Loan Term:</strong> {loanTerm} years
-          </p>
+      <div style={dataContainerStyle}>
+        <div style={plotStyle}>
+          <Plot data={data} layout={layout} />
         </div>
+        <div style={dataContnetStyle}>
+            <p>
+              <strong>Monthly Payment: ${monthlyPayment.toFixed(2)}</strong> <br />
+              &nbsp;&nbsp;Total Principal: ${totalPrincipal.toFixed(2)} <br />
+              Total Interest: ${totalInterest.toFixed(2)} <br />
+              &nbsp;&nbsp;Total Payments: ${totalPayments.toFixed(2)} <br />
+              Loan Term: {loanTerm} years
+            </p>
+          </div>
       </div>
     </div>
   );
