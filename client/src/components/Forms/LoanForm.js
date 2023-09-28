@@ -4,6 +4,15 @@ import Data from '../Data/data';
 import { useQuery } from '@apollo/client';
 import { QUERY_SEARCHES } from '../../utils/queries';
 
+const userFormStyle = {
+  fontSize: "24px",
+  padding: "0.5rem",
+  borderRadius: "0.5rem",
+  border: "2px solid #BABABA",
+  backgroundColor: "white",
+  margin: "1rem 0",
+};
+
 function LoanForm({
   loanAmount,
   interestRate,
@@ -18,7 +27,7 @@ function LoanForm({
   onStateTaxPercentageChange,
 }) {
   return (
-    <div>
+    <div style={userFormStyle}>
       <h2>Loan Details</h2>
       <label>
         Loan Amount:
