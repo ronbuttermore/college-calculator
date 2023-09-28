@@ -29,7 +29,7 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     {
       labels: ['Monthly Payment', 'Total Principal', 'Total Interest'],
       values: [monthlyPayment, totalPrincipal, totalInterest],
-      hole: .3,
+      hole: .35,
       type: 'pie',
       marker: {
         colors: ['#FFF200', '#0076AA', '#00C9FF'],
@@ -67,7 +67,7 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     borderRadius: '2rem', // Rounded corners
     // boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
     // padding: '10px', // Add some padding to separate the chart from the container
-    // maxWidth: '690px', // Set a maximum width as needed
+    maxWidth: '1000px', // Set a maximum width as needed
     minWidth: '500px',
     width: '80vw',
     margin: '20px auto', // Adjust the margin to position the container vertically and horizontally
@@ -102,7 +102,6 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
 
   const dataContnetStyle = {
     padding: "1rem",
-    // fontSize: "small",
     fontWeight: "500",
     lineHeight: "1.6",
     margin: "auto",
