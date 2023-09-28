@@ -63,7 +63,7 @@ const PieChart = ({
         `State Income Tax            ${((stateTax / (annualSalary / 12)) * 100).toFixed(2)}%    $${stateTax.toFixed(2)}`,
         `Student Loan               ${((studentLoanPayment / (annualSalary / 12)) * 100).toFixed(2)}%     $${studentLoanPayment.toFixed(2)}`,
       ],
-      values: [federalTax, stateTax, takeHomePay, studentLoanPayment],
+      values: [federalTax, takeHomePay, stateTax, studentLoanPayment],
       type: 'pie',
       marker: {
         colors: ['#27374D', '#526D82', '#9DB2BF', 'DDE6ED'],
