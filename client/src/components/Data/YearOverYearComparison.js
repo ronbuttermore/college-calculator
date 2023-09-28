@@ -105,7 +105,7 @@ const YearOverYearComparison = ({
         type: 'bar',
         name: 'College Graduate',
         marker: {
-          color: 'rgba(55, 128, 191, 0.7)',
+          color: '#00C9FF',
         },
       },
       {
@@ -114,7 +114,7 @@ const YearOverYearComparison = ({
         type: 'bar',
         name: 'High School Graduate',
         marker: {
-          color: 'rgba(255, 0, 0, 0.7)',
+          color: '#0076AA',
         },
       },
     ]);
@@ -123,7 +123,7 @@ const YearOverYearComparison = ({
   }, [annualSalary, annualLoanPayment, loanTerm, state]);
 
   const layout = {
-    title: `Year Over Year Comparison`,
+    // title: `Year Over Year Comparison`,
     xaxis: {
       title: 'Year',
     },
@@ -135,31 +135,94 @@ const YearOverYearComparison = ({
 
   const [totalEarningsTableData, setTotalEarningsTableData] = useState([]);
 
+  const chartContainerStyle = {
+    border: "2px solid #BABABA", // Thin border
+    borderRadius: '2rem', // Rounded corners
+    // boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
+    // padding: '10px', // Add some padding to separate the chart from the container
+    maxWidth: '1000px', // Set a maximum width as needed
+    minWidth: '500px',
+    width: '80vw',
+    margin: '20px auto', // Adjust the margin to position the container vertically and horizontally
+    textAlign: 'center', // Center the chart within the container
+  };
+
+  const dataTitleStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    backgroundColor: "#00A1CC",
+    borderRadius: "2rem 2rem 0 0",
+    padding: "1rem 0.5rem",
+    color: "white",
+    fontWeight: "400",
+    fontSize: "25px"
+  }
+
+  const dataTitle2Style = {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    backgroundColor: "#00A1CC",
+    // borderRadius: "2rem 2rem 0 0",
+    padding: "1rem 0.5rem",
+    color: "white",
+    fontWeight: "400",
+    fontSize: "25px"
+  }
+
+  const dataContainerStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    alignContent: "center",
+    textAlign: "center",
+    margin: "auto",
+  }
+
+  const plotStyle = {
+    margin: "0 0.5rem",
+    // marginTop: "-1rem",
+    // backgroundColor: "transparent",
+  }
+
+  const dataContnetStyle = {
+    padding: "1rem",
+    fontWeight: "500",
+    lineHeight: "1.6",
+    margin: "auto",
+  }
+
   return (
-    <div>
-      <Plot data={data} layout={layout} />
+    <div style={chartContainerStyle}>
+      <h1 style={dataTitleStyle}>Year Over Year Comparison</h1>
+      <div style={plotStyle}>
+        <Plot data={data} layout={layout} />
+      </div>
       <div className="table-container">
-        <h2>Total Earnings Comparison (Every 5 Years)</h2>
-        <table className="comparison-table">
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th>Total Earnings (College)</th>
-              <th>Total Earnings (High School)</th>
-              <th>Earnings Difference</th>
-            </tr>
-          </thead>
-          <tbody>
-            {totalEarningsTableData.map((item, index) => (
-              <tr key={index}>
-                <td>{item.Year}</td>
-                <td>${item['Total Earnings (College)']}</td>
-                <td>${item['Total Earnings (High School)']}</td>
-                <td>${item['Earnings Difference']}</td>
+        <h2 style={dataTitle2Style}>Total Earnings Comparison (Every 5 Years)</h2>
+        <div style={dataContainerStyle}>
+          <table style={dataContnetStyle} className="comparison-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Total Earnings (College)</th>
+                <th>Total Earnings (High School)</th>
+                <th>Earnings Difference</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {totalEarningsTableData.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.Year}</td>
+                  <td>${item['Total Earnings (College)']}</td>
+                  <td>${item['Total Earnings (High School)']}</td>
+                  <td>${item['Earnings Difference']}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
