@@ -20,6 +20,11 @@ function Navbar() {
             <div>
               {Auth.loggedIn() ? (
                 <>
+                  <button className="nav-btn" onClick={() => {
+                    document.getElementById('saved-searches').scrollIntoView({behavior: 'smooth'});
+                    }}>
+                    Saved Searches
+                  </button>
                   <button className="logout-btn" onClick={logout}>
                     Logout
                   </button>

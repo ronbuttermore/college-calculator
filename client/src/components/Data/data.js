@@ -83,6 +83,15 @@ const Data = () => {
           state="Colorado"
         />
       </div>
+
+      <div>
+        <button className="save-btn">
+          Save Updated Results
+        </button>
+        <button className="save-btn">
+          Save New Results
+        </button>
+      </div>
     </div>
   );
 };
