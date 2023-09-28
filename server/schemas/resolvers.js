@@ -10,13 +10,13 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('searches');
     },
-    searches: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Search.find(params).sort({ createdAt: -1 });
-    },
-    search: async (parent, { searchId }) => {
-      return Search.findOne({ _id: searchId });
-    },
+    // searches: async (parent, { username }) => {
+    //   const params = username ? { username } : {};
+    //   return Search.find(params).sort({ createdAt: -1 });
+    // },
+    // search: async (parent, { searchId }) => {
+    //   return Search.findOne({ _id: searchId });
+    // },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('searches');
@@ -45,13 +45,22 @@ const resolvers = {
       return { token, user };
     },
 
-    addSearch: async (parent, { name, searchedBy }) => {
-      const search = await Search.create({ name, searchedBy });
-      await User.findOneAndUpdate(
-        { username: searchedBy },
-        { $addToSet: { search: search._id } }
-      );
-      return search;
+    addSearch: async (parent,  {searchData} , context) => {
+     if (context.user) {      
+   //     const search = await Search.create( university );
+   //     console.log(search)
+        const user = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { addSearch: searchData } },
+          {new: true}
+        );
+    //    return User.findOne({ _id: context.user._id }).populate('searches');
+    return user;    
+  }
+      throw new AuthenticationError('You need to be logged in!');
+
+     
+
     },
 
     removeSearch: async (parent, { searchId }) => {
