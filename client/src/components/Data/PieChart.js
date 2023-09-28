@@ -65,7 +65,7 @@ const PieChart = ({
         `State Income Tax            ${((stateTax / (annualSalary / 12)) * 100).toFixed(2)}%    $${stateTax.toFixed(2)}`,
         `Student Loan               ${((studentLoanPayment / (annualSalary / 12)) * 100).toFixed(2)}%     $${studentLoanPayment.toFixed(2)}`,
       ],
-      values: [federalTax, takeHomePay, stateTax, studentLoanPayment],
+      values: [federalTax, stateTax, takeHomePay, studentLoanPayment],
       hole: .3,
       type: 'pie',
       marker: {
@@ -82,7 +82,7 @@ const PieChart = ({
       y: +.5, // Adjust the y position as needed
       traceorder: 'normal', // Display legend items in the order they appear in the data array
       font: {
-        family: 'Arial',
+        family: '"Montserrat", sans-serif',
         size: 15,
         color: '#000', // Legend text color
       },
@@ -112,6 +112,7 @@ const PieChart = ({
     padding: "1rem 0.5rem",
     color: "white",
     fontWeight: "400",
+    fontSize: "25px"
   }
 
   const dataSubtitleStyle = {
