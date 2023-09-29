@@ -162,7 +162,46 @@ const YearOverYearComparison = ({
       title: 'Annual Salary',
     },
     barmode: 'group', // Display bars side by side
-  };
+    // width: 640,
+    height: 400,
+    legend:{
+      x:0, y:125
+    }
+  }
+
+  // var x = window.matchMedia("(max-width: 700px)")
+
+  // let layout;
+
+  // if (x.matches) { // If media query matches
+  //   layout = {
+  //     autosize: true,
+  //     // title: `Year Over Year Comparison`,
+  //     xaxis: {
+  //       title: 'Year',
+  //     },
+  //     yaxis: {
+  //       title: 'Annual Salary',
+  //     },
+  //     barmode: 'group', // Display bars side by side
+  //     legend:{
+  //       x:300, y:300
+  //     }
+  //   };
+    
+  // } else {
+  //   layout = {
+  //     autosize: true,
+  //     // title: `Year Over Year Comparison`,
+  //     xaxis: {
+  //       title: 'Year',
+  //     },
+  //     yaxis: {
+  //       title: 'Annual Salary',
+  //     },
+  //     barmode: 'group', // Display bars side by side
+  //   };
+  // }
 
   const [totalEarningsTableData, setTotalEarningsTableData] = useState([]);
 
@@ -212,8 +251,8 @@ const YearOverYearComparison = ({
   }
 
   const plotStyle = {
-    margin: "0 0.5rem",
-    // marginTop: "-1rem",
+    margin: "0.5rem",
+    marginTop: "0",
     // backgroundColor: "transparent",
   }
 
@@ -227,13 +266,15 @@ const YearOverYearComparison = ({
   return (
     <div style={chartContainerStyle}>
       <h1 style={dataTitleStyle}>Year Over Year Comparison</h1>
-      <ResizableDiv style={plotStyle}>
-        <Plot 
-          data={data}
-          layout={layout}
-          useResizeHandler={true}
-          style={{width: "100%", height: "100%"}} />
-      </ResizableDiv>
+      <div style={plotStyle}>
+        <ResizableDiv >
+          <Plot 
+            data={data}
+            layout={layout}
+            useResizeHandler={true}
+            style={{width: "100%", height: "100%"}} />
+        </ResizableDiv>
+      </div>
       <div className="table-container">
         <h2 style={dataTitle2Style}>Total Earnings Comparison (Every 5 Years)</h2>
         <div style={dataContainerStyle}>

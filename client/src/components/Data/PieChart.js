@@ -1,7 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import _ from "lodash";
+import PropTypes from "prop-types";
+import React, { useEffect, useState, Component } from 'react';
+import ReactDOM from "react-dom";
 import Plot from 'react-plotly.js';
 
 import './data.css';
+
+class ResizableDiv extends Component {
+  constructor(props) {
+      super(props);
+      this.ref = React.createRef();
+  }
+  componentDidMount() {
+      this.observer = new window.ResizeObserver(
+          _.debounce(item => window.dispatchEvent(new Event("resize")), 1000)
+      );
+      this.observer.observe(this.ref.current);
+  }
+  componentWillUnmount() {
+      this.observer.unobserve();
+  }
+  render() {
+      return (
+          <div style={{resize: "both", overflow: "hidden"}} ref={this.ref}>
+              {this.props.children}
+          </div>
+      );
+  }
+}
+ResizableDiv.propTypes = {
+  children: PropTypes.element,
+};
 
 const PieChart = ({
   loanAmount,
@@ -130,13 +159,14 @@ const PieChart = ({
       <h1 style={dataTitleStyle}>Future Payment Responsiblity</h1>
       <p style={dataSubtitleStyle}>What does it really look like to repay your student loans? <br />
       Based on current tax rates, here’s the repayment on your projected income.</p>
-      <div style={plotStyle}>
+      <ResizableDiv style={plotStyle}>
         <Plot 
           data={data} 
           layout={layout} 
           useResizeHandler={true}
+          style={{width: "100%", height: "100%"}}
         />
-      </div>
+      </ResizableDiv>
     </div>
   );
 };
