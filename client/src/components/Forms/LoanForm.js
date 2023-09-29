@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import './Form.css';
 import Data from '../Data/data';
 import { useQuery } from '@apollo/client';
@@ -26,15 +26,40 @@ function LoanForm({
   onAnnualSalaryChange,
   onStateTaxPercentageChange,
 }) {
+  const [submitState, setSubmitState] = useState({
+    loanAmount: "",
+    interestRate: "",
+    loanTerm: "",
+    annualSalary: "",
+    stateTaxPercentage: "",
+    onInterestRateChange: "",
+    onLoanTermChange: "",
+    onAnnualSalaryChange: "",
+    onStateTaxPercentageChange:""
+});
+const handleChange = (e) => {
+  const {name, value} = e.target
+  console.log(value)
+  setSubmitState ((prev) => {
+      return {...prev, [name]: value}
+  })
+};
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  console.log(submitState);
+};
+
+
   return (
-    <div style={userFormStyle}>
+    <form>
       <h2>Loan Details</h2>
       <label>
         Loan Amount:
         <input
           type="number"
           value={loanAmount}
-          onChange={(e) => onLoanAmountChange(Number(e.target.value))}
+          onChange={(e) => onLoanAmountChange(Number(e.target.value), handleChange)}
         />
       </label>
       <br />
@@ -43,7 +68,7 @@ function LoanForm({
         <input
           type="number"
           value={interestRate}
-          onChange={(e) => onInterestRateChange(Number(e.target.value))}
+          onChange={(e) => onInterestRateChange(Number(e.target.value), handleChange)}
         />
       </label>
       <br />
@@ -52,7 +77,7 @@ function LoanForm({
         <input
           type="number"
           value={loanTerm}
-          onChange={(e) => onLoanTermChange(Number(e.target.value))}
+          onChange={(e) => onLoanTermChange(Number(e.target.value), handleChange)}
         />
       </label>
 
@@ -73,7 +98,7 @@ function LoanForm({
         <input
           type="number"
           value={annualSalary}
-          onChange={(e) => onAnnualSalaryChange(Number(e.target.value))}
+          onChange={(e) => onAnnualSalaryChange(Number(e.target.value), handleChange)}
         />
       </label>
       <br />
@@ -82,10 +107,10 @@ function LoanForm({
         <input
           type="number"
           value={stateTaxPercentage}
-          onChange={(e) => onStateTaxPercentageChange(Number(e.target.value))}
+          onChange={(e) => onStateTaxPercentageChange(Number(e.target.value), handleChange)}
         />
       </label>
-    </div>
+    </form>
   );
 }
 
