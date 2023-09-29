@@ -1,5 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import _ from "lodash";
+import PropTypes from "prop-types";
+import React, { useState, useEffect, Component } from 'react';
+import ReactDOM from "react-dom";
 import Plot from 'react-plotly.js';
+
+class ResizableDiv extends Component {
+  constructor(props) {
+      super(props);
+      this.ref = React.createRef();
+  }
+  componentDidMount() {
+      this.observer = new window.ResizeObserver(
+          _.debounce(item => window.dispatchEvent(new Event("resize")), 1000)
+      );
+      this.observer.observe(this.ref.current);
+  }
+  componentWillUnmount() {
+      this.observer.unobserve();
+  }
+  render() {
+      return (
+          <div style={{resize: "both", overflow: "hidden"}} ref={this.ref}>
+              {this.props.children}
+          </div>
+      );
+  }
+}
+ResizableDiv.propTypes = {
+  children: PropTypes.element,
+};
 
 const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
   const [monthlyPayment, setMonthlyPayment] = useState(0);
@@ -68,7 +97,7 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     // boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
     // padding: '10px', // Add some padding to separate the chart from the container
     maxWidth: '1000px', // Set a maximum width as needed
-    minWidth: '500px',
+    // minWidth: '500px',
     width: '80vw',
     margin: '20px auto', // Adjust the margin to position the container vertically and horizontally
     textAlign: 'center', // Center the chart within the container
@@ -94,12 +123,6 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     textAlign: "center",
   }
 
-  const plotStyle = {
-    margin: "0.5rem",
-    // marginTop: "-1rem",
-    // backgroundColor: "transparent",
-  }
-
   const dataContnetStyle = {
     padding: "1rem",
     fontWeight: "500",
@@ -111,9 +134,14 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     <div style={chartContainerStyle}>
       <h1 style={dataTitleStyle}>Student Loan Details</h1>
       <div style={dataContainerStyle}>
-        <div style={plotStyle}>
-          <Plot data={data} layout={layout} />
-        </div>
+        <ResizableDiv>
+          <Plot
+            data={data}
+            layout={layout}
+            useResizeHandler={true}
+            style={{width: "100%", height: "100%"}}
+            />
+        </ResizableDiv>
         <div style={dataContnetStyle}>
             <p>
               <strong>Monthly Payment: ${monthlyPayment.toFixed(2)}</strong> <br />

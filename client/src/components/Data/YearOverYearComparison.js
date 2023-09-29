@@ -1,5 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import _ from "lodash";
+import PropTypes from "prop-types";
+import React, { useEffect, useState, Component } from 'react';
+import ReactDOM from "react-dom";
 import Plot from 'react-plotly.js';
+
+class ResizableDiv extends Component {
+  constructor(props) {
+      super(props);
+      this.ref = React.createRef();
+  }
+  componentDidMount() {
+      this.observer = new window.ResizeObserver(
+          _.debounce(item => window.dispatchEvent(new Event("resize")), 1000)
+      );
+      this.observer.observe(this.ref.current);
+  }
+  componentWillUnmount() {
+      this.observer.unobserve();
+  }
+  render() {
+      return (
+          <div style={{resize: "both", overflow: "hidden"}} ref={this.ref}>
+              {this.props.children}
+          </div>
+      );
+  }
+}
+ResizableDiv.propTypes = {
+  children: PropTypes.element,
+};
+
 
 const YearOverYearComparison = ({
   annualSalary,
@@ -123,6 +153,7 @@ const YearOverYearComparison = ({
   }, [annualSalary, annualLoanPayment, loanTerm, state]);
 
   const layout = {
+    autosize: true,
     // title: `Year Over Year Comparison`,
     xaxis: {
       title: 'Year',
@@ -131,7 +162,46 @@ const YearOverYearComparison = ({
       title: 'Annual Salary',
     },
     barmode: 'group', // Display bars side by side
-  };
+    // width: 640,
+    height: 400,
+    legend:{
+      x:0, y:125
+    }
+  }
+
+  // var x = window.matchMedia("(max-width: 700px)")
+
+  // let layout;
+
+  // if (x.matches) { // If media query matches
+  //   layout = {
+  //     autosize: true,
+  //     // title: `Year Over Year Comparison`,
+  //     xaxis: {
+  //       title: 'Year',
+  //     },
+  //     yaxis: {
+  //       title: 'Annual Salary',
+  //     },
+  //     barmode: 'group', // Display bars side by side
+  //     legend:{
+  //       x:300, y:300
+  //     }
+  //   };
+    
+  // } else {
+  //   layout = {
+  //     autosize: true,
+  //     // title: `Year Over Year Comparison`,
+  //     xaxis: {
+  //       title: 'Year',
+  //     },
+  //     yaxis: {
+  //       title: 'Annual Salary',
+  //     },
+  //     barmode: 'group', // Display bars side by side
+  //   };
+  // }
 
   const [totalEarningsTableData, setTotalEarningsTableData] = useState([]);
 
@@ -141,7 +211,7 @@ const YearOverYearComparison = ({
     // boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
     // padding: '10px', // Add some padding to separate the chart from the container
     maxWidth: '1000px', // Set a maximum width as needed
-    minWidth: '500px',
+    // minWidth: '500px',
     width: '80vw',
     margin: '20px auto', // Adjust the margin to position the container vertically and horizontally
     textAlign: 'center', // Center the chart within the container
@@ -181,23 +251,56 @@ const YearOverYearComparison = ({
   }
 
   const plotStyle = {
-    margin: "0 0.5rem",
-    // marginTop: "-1rem",
+    margin: "0.5rem",
+    marginTop: "0",
     // backgroundColor: "transparent",
   }
 
-  const dataContnetStyle = {
-    padding: "1rem",
-    fontWeight: "500",
-    lineHeight: "1.6",
-    margin: "auto",
-  }
+  // const dataContnetStyle = {
+  //   padding: "1rem",
+  //   fontWeight: "500",
+  //   lineHeight: "1.6",
+  //   margin: "auto",
+  // }
+
+  let dataContnetStyle;
+
+  function changeText(x) {
+    if (x.matches) { // If media query matches
+      dataContnetStyle = {
+        padding: "1rem",
+        fontWeight: "500",
+        lineHeight: "1.6",
+        margin: "auto",
+        fontSize: "small",
+      };
+    } else {
+      dataContnetStyle = {
+        padding: "1rem",
+        fontWeight: "500",
+        lineHeight: "1.6",
+        margin: "auto",
+      };
+    }
+  };
+
+  var x = window.matchMedia("(max-width: 810px)")
+  changeText(x) // Call listener function at run time
+  x.addEventListener("change", () => {
+    this.changeText();
+  }); // Attach listener function on state changes
 
   return (
     <div style={chartContainerStyle}>
       <h1 style={dataTitleStyle}>Year Over Year Comparison</h1>
       <div style={plotStyle}>
-        <Plot data={data} layout={layout} />
+        <ResizableDiv >
+          <Plot 
+            data={data}
+            layout={layout}
+            useResizeHandler={true}
+            style={{width: "100%", height: "100%"}} />
+        </ResizableDiv>
       </div>
       <div className="table-container">
         <h2 style={dataTitle2Style}>Total Earnings Comparison (Every 5 Years)</h2>

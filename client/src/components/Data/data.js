@@ -84,7 +84,7 @@ const Data = () => {
         />
       </div>
 
-      <div>
+      <div className='save-button-container'>
         <button className="save-btn">
           Save Updated Results
         </button>
