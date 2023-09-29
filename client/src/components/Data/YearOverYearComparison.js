@@ -256,12 +256,39 @@ const YearOverYearComparison = ({
     // backgroundColor: "transparent",
   }
 
-  const dataContnetStyle = {
-    padding: "1rem",
-    fontWeight: "500",
-    lineHeight: "1.6",
-    margin: "auto",
-  }
+  // const dataContnetStyle = {
+  //   padding: "1rem",
+  //   fontWeight: "500",
+  //   lineHeight: "1.6",
+  //   margin: "auto",
+  // }
+
+  let dataContnetStyle;
+
+  function changeText(x) {
+    if (x.matches) { // If media query matches
+      dataContnetStyle = {
+        padding: "1rem",
+        fontWeight: "500",
+        lineHeight: "1.6",
+        margin: "auto",
+        fontSize: "small",
+      };
+    } else {
+      dataContnetStyle = {
+        padding: "1rem",
+        fontWeight: "500",
+        lineHeight: "1.6",
+        margin: "auto",
+      };
+    }
+  };
+
+  var x = window.matchMedia("(max-width: 810px)")
+  changeText(x) // Call listener function at run time
+  x.addEventListener("change", () => {
+    this.changeText();
+  }); // Attach listener function on state changes
 
   return (
     <div style={chartContainerStyle}>
