@@ -8,7 +8,7 @@ import YearOverYearComparison from '../Data/YearOverYearComparison';
 import LoanForm from '../Forms/LoanForm'
 
 const Data = () => {
-  // Define loan details
+  //Define loan details
   const [loanAmount, setLoanAmount] = useState(200000);
   const [interestRate, setInterestRate] = useState(5);
   const [loanTerm, setLoanTerm] = useState(10);
@@ -17,6 +17,9 @@ const Data = () => {
   const [monthlyLoanPayment, setMonthlyLoanPayment] = useState(0);
   const [annualSalary, setAnnualSalary] = useState(80000);
   const [stateTaxPercentage, setStateTaxPercentage] = useState(6);
+  const [school,setSchool] = useState("");
+  const [major, setMajor] = useState("");
+
 
   useEffect(() => {
     // Calculate loan details when loan input values change
@@ -32,6 +35,13 @@ const Data = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //fetch goes here
+    console.log (loanAmount)
+    console.log (interestRate)
+    console.log(loanTerm)
+    console.log(annualSalary)
+    console.log(stateTaxPercentage)
+
     // You can add code here to handle form submission if needed.
   };
 
@@ -40,8 +50,11 @@ const Data = () => {
       <form onSubmit={handleSubmit}>
         <LoanForm
           loanAmount={loanAmount}
+          setLoanAmount={setLoanAmount}
           interestRate={interestRate}
+          setInterestRate={setInterestRate}
           loanTerm={loanTerm}
+          setLoanTerm={setLoanTerm}
           monthlyLoanPayment={monthlyLoanPayment}
           annualSalary={annualSalary}
           stateTaxPercentage={stateTaxPercentage}
@@ -50,12 +63,17 @@ const Data = () => {
           onLoanTermChange={setLoanTerm}
           onAnnualSalaryChange={setAnnualSalary}
           onStateTaxPercentageChange={setStateTaxPercentage}
+          school={school}
+          setSchool={setSchool}
+          major={major}
+          setMajor={setMajor}
+          
         />
         <button type="submit">Submit</button>
       </form>
 
-      <div className="chart-container">
-        {/* Render the chart components */}
+     <div className="chart-container">
+         {/* Render the chart components  */}
         <StudentLoanPieChart
           loanAmount={loanAmount}
           interestRate={interestRate}
@@ -74,8 +92,8 @@ const Data = () => {
         />
       </div>
 
-      <div className="chart-container">
-        {/* Provide dummy data for YearOverYearComparison */}
+       <div className="chart-container">
+         {/* Provide dummy data for YearOverYearComparison  */}
         <YearOverYearComparison
           annualSalary={annualSalary}
           annualLoanPayment={monthlyLoanPayment * 12}

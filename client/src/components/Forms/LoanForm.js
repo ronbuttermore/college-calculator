@@ -1,63 +1,54 @@
-import React, { useState }from 'react';
+import React from 'react';
 import './Form.css';
-import Data from '../Data/data';
-import { useQuery } from '@apollo/client';
-import { QUERY_SEARCHES } from '../../utils/queries';
+//import Data from '../Data/data';
+//import { useQuery } from '@apollo/client';
+//import { QUERY_SEARCHES } from '../../utils/queries';
 
-const userFormStyle = {
-  fontSize: "24px",
-  padding: "0.5rem",
-  borderRadius: "0.5rem",
-  border: "2px solid #BABABA",
-  backgroundColor: "white",
-  margin: "1rem 0",
-};
+
 
 function LoanForm({
-  loanAmount,
-  interestRate,
-  loanTerm,
-  monthlyLoanPayment,
+  loanAmount, setLoanAmount,
+  interestRate, setInterestRate,
+  loanTerm, setLoanTerm,
+  school, setSchool,
+  major, setMajor,
   annualSalary,
   stateTaxPercentage,
-  onLoanAmountChange,
-  onInterestRateChange,
   onLoanTermChange,
   onAnnualSalaryChange,
   onStateTaxPercentageChange,
+  onLoanAmountChange,
+  onInterestRateChange
+
 }) {
-  const [submitState, setSubmitState] = useState({
-    loanAmount: "",
-    interestRate: "",
-    loanTerm: "",
-    annualSalary: "",
-    stateTaxPercentage: "",
-    onInterestRateChange: "",
-    onLoanTermChange: "",
-    onAnnualSalaryChange: "",
-    onStateTaxPercentageChange:""
-});
+
 const handleChange = (e) => {
-  const {name, value} = e.target
-  console.log(value)
-  setSubmitState ((prev) => {
-      return {...prev, [name]: value}
-  })
+  let {name, value} = e.target
+  if (name = "loanAmount") {
+    setLoanAmount(value)
+  } else if (name = "interestRate") {
+    setInterestRate(value)
+  } else if (name = "loanTerm") {
+    setLoanTerm(value)
+  } else if (name = "school") {
+    setSchool(value) 
+  } else if (name = "major") {
+    setMajor(value)
+  } else if (name = "annualSalary") {
+    onAnnualSalaryChange(value)
+  } else if (name ="stateTaxPercentage") {
+    stateTaxPercentage(value)
+  }
+
 };
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  console.log(submitState);
-};
-
-
   return (
-    <form>
+    <>
       <h2>Loan Details</h2>
       <label>
         Loan Amount:
         <input
           type="number"
+          name='loanAmount'
           value={loanAmount}
           onChange={(e) => onLoanAmountChange(Number(e.target.value), handleChange)}
         />
@@ -67,6 +58,7 @@ const handleSubmit = (event) => {
         Interest Rate (%):
         <input
           type="number"
+          name="interestRate"
           value={interestRate}
           onChange={(e) => onInterestRateChange(Number(e.target.value), handleChange)}
         />
@@ -76,6 +68,7 @@ const handleSubmit = (event) => {
         Loan Term (years):
         <input
           type="number"
+          name='loanTerm'
           value={loanTerm}
           onChange={(e) => onLoanTermChange(Number(e.target.value), handleChange)}
         />
@@ -84,12 +77,12 @@ const handleSubmit = (event) => {
       <h2>Education Details</h2>
       <label>
         School:
-        <input type="text" />
+        <input type="text" name="school" value={school} onChange={handleChange} />
       </label>
       <br />
       <label>
         Major:
-        <input type="text" />
+        <input type="text" name='major' value={major} onChange={handleChange}/>
       </label>
 
       <h2>Income and Tax Details</h2>
@@ -97,6 +90,7 @@ const handleSubmit = (event) => {
         Annual Salary:
         <input
           type="number"
+          name="annualSalary"
           value={annualSalary}
           onChange={(e) => onAnnualSalaryChange(Number(e.target.value), handleChange)}
         />
@@ -106,11 +100,13 @@ const handleSubmit = (event) => {
         State Tax Percentage (%):
         <input
           type="number"
+          name="stateTaxPercentage"
           value={stateTaxPercentage}
           onChange={(e) => onStateTaxPercentageChange(Number(e.target.value), handleChange)}
         />
       </label>
-    </form>
+    </>
+    
   );
 }
 
