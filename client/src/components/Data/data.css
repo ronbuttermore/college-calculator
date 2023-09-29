@@ -14,3 +14,34 @@
     border: none;
     margin: 0.5rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .chart-container {
+      width: 90vw; /* Adjust the width as needed for mobile screens */
+      margin: 10px auto; /* Adjust the margin to center the container */
+      padding: 0; /* Remove padding for better mobile display */
+    }
+    .data-title {
+      font-size: 20px; /* Reduce title font size for mobile */
+    }
+    .data-container {
+      flex-direction: column; /* Stack the chart and data vertically for mobile */
+      align-items: center;
+    }
+    .plot {
+      width: 90vw; /* Adjust the width of the plot for mobile */
+    }
+    .data-content {
+      padding: 0.5rem; /* Add some space between content on mobile */
+      font-size: 14px; /* Reduce font size for mobile */
+    }
+    .save-btn {
+        display: flex;
+        /* align-items: center; */
+        flex-wrap: wrap;
+    }
+
+    .save-button-container {
+        justify-content: center;
+    }
+  }
