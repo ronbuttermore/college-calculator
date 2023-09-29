@@ -4,6 +4,33 @@ import React, { useEffect, useState, Component } from 'react';
 import ReactDOM from "react-dom";
 import Plot from 'react-plotly.js';
 
+class ResizableDiv extends Component {
+  constructor(props) {
+      super(props);
+      this.ref = React.createRef();
+  }
+  componentDidMount() {
+      this.observer = new window.ResizeObserver(
+          _.debounce(item => window.dispatchEvent(new Event("resize")), 1000)
+      );
+      this.observer.observe(this.ref.current);
+  }
+  componentWillUnmount() {
+      this.observer.unobserve();
+  }
+  render() {
+      return (
+          <div style={{resize: "both", overflow: "hidden"}} ref={this.ref}>
+              {this.props.children}
+          </div>
+      );
+  }
+}
+ResizableDiv.propTypes = {
+  children: PropTypes.element,
+};
+
+
 const YearOverYearComparison = ({
   annualSalary,
   annualLoanPayment,
@@ -126,6 +153,7 @@ const YearOverYearComparison = ({
   }, [annualSalary, annualLoanPayment, loanTerm, state]);
 
   const layout = {
+    autosize: true,
     // title: `Year Over Year Comparison`,
     xaxis: {
       title: 'Year',
@@ -144,7 +172,7 @@ const YearOverYearComparison = ({
     // boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
     // padding: '10px', // Add some padding to separate the chart from the container
     maxWidth: '1000px', // Set a maximum width as needed
-    minWidth: '500px',
+    // minWidth: '500px',
     width: '80vw',
     margin: '20px auto', // Adjust the margin to position the container vertically and horizontally
     textAlign: 'center', // Center the chart within the container
@@ -199,9 +227,13 @@ const YearOverYearComparison = ({
   return (
     <div style={chartContainerStyle}>
       <h1 style={dataTitleStyle}>Year Over Year Comparison</h1>
-      <div style={plotStyle}>
-        <Plot data={data} layout={layout} />
-      </div>
+      <ResizableDiv style={plotStyle}>
+        <Plot 
+          data={data}
+          layout={layout}
+          useResizeHandler={true}
+          style={{width: "100%", height: "100%"}} />
+      </ResizableDiv>
       <div className="table-container">
         <h2 style={dataTitle2Style}>Total Earnings Comparison (Every 5 Years)</h2>
         <div style={dataContainerStyle}>
