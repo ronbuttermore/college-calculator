@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import _ from "lodash";
+import PropTypes from "prop-types";
+import React, { useEffect, useState, Component } from 'react';
+import ReactDOM from "react-dom";
 import Plot from 'react-plotly.js';
 
 const YearOverYearComparison = ({

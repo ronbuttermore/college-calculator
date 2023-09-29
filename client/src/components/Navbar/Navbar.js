@@ -34,7 +34,9 @@ function Navbar() {
                   </div>
                   <img src={menu} alt="menu" className="mobMenu" onClick={() =>setShowMenu(!showMenu)}/>
                   <div className="navMenu" style={{display: showMenu? 'flex': 'none'}}>
-                    <Link to='saved-searches' activeClass='active' spy={true} smooth={true} offset={-50} duration={500} className="listItem" onClick={() =>setShowMenu(false)} >Saved Searches</Link>
+                    <Link activeClass='active' className="listItem" onClick={() => {
+                      document.getElementById('saved-searches').scrollIntoView({behavior: 'smooth'});
+                      }}>Saved Searches</Link>
                     <Link activeClass='active' className="listItem" onClick={logout} >Logout</Link>
                   </div>
                 </>
