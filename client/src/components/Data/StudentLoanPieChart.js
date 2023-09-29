@@ -140,14 +140,16 @@ const StudentLoanPieChart = ({ loanAmount, interestRate, loanTerm }) => {
     <div style={chartContainerStyle}>
       <h1 style={dataTitleStyle}>Student Loan Details</h1>
       <div style={dataContainerStyle}>
-        <ResizableDiv style={plotStyle}>
-          <Plot
-            data={data}
-            layout={layout}
-            useResizeHandler={true}
-            style={{width: "100%", height: "100%"}}
-            />
-        </ResizableDiv>
+        <div style={plotStyle}>
+          <ResizableDiv >
+            <Plot
+              data={data}
+              layout={layout}
+              useResizeHandler={true}
+              style={{width: "100%", height: "100%"}}
+              />
+          </ResizableDiv>
+        </div>
         <div style={dataContnetStyle}>
             <p>
               <strong>Monthly Payment: ${monthlyPayment.toFixed(2)}</strong> <br />

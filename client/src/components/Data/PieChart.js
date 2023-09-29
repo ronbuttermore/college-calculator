@@ -103,25 +103,83 @@ const PieChart = ({
     },
   ];
 
-  const layout = {
-    title: `Gross Monthly Pay $${(annualSalary / 12).toFixed(2)}`,
-    legend: {
-      orientation: 'v', // Horizontal legend
-      x: -2, // Adjust the x position as needed
-      y: +.5, // Adjust the y position as needed
-      traceorder: 'normal', // Display legend items in the order they appear in the data array
-      font: {
-        family: '"Montserrat", sans-serif',
-        size: 15,
-        color: '#000', // Legend text color
-      },
-    },
-    responsive: true,
-    useResizeHandler: true,
-    autosize: true,
-    width: '100%',
-    height: '100%'
-  };
+  // const layout = {
+  //   title: `Gross Monthly Pay $${(annualSalary / 12).toFixed(2)}`,
+  //   legend: {
+  //     orientation: 'v', // Horizontal legend
+  //     x: 0, // Adjust the x position as needed
+  //     y: 0, // Adjust the y position as needed
+  //     traceorder: 'normal', // Display legend items in the order they appear in the data array
+  //     font: {
+  //       family: '"Montserrat", sans-serif',
+  //       size: 15,
+  //       color: '#000', // Legend text color
+  //     },
+  //   },
+  //   responsive: true,
+  //   useResizeHandler: true,
+  //   autosize: true,
+  //   // width: '100%',
+  //   height: 480,
+  //   legend:{
+  //     x:0, y:-110
+  //   }
+  // };
+
+  let layout;
+
+  function resizeLayout(x) {
+    if (x.matches) { // If media query matches
+      layout = {
+        title: `Gross Monthly Pay $${(annualSalary / 12).toFixed(2)}`,
+        legend: {
+          orientation: 'v', // Horizontal legend
+          x: 0, // Adjust the x position as needed
+          y: 0, // Adjust the y position as needed
+          traceorder: 'normal', // Display legend items in the order they appear in the data array
+          font: {
+            family: '"Montserrat", sans-serif',
+            size: 15,
+            color: '#000', // Legend text color
+          },
+        },
+        responsive: true,
+        useResizeHandler: true,
+        autosize: true,
+        // width: '100%',
+        height: 480,
+        legend:{
+          x:0, y:-110
+        }
+      };
+    } else {
+      layout = {
+        title: `Gross Monthly Pay $${(annualSalary / 12).toFixed(2)}`,
+        legend: {
+          orientation: 'v', // Horizontal legend
+          x: -2, // Adjust the x position as needed
+          y: +.5, // Adjust the y position as needed
+          traceorder: 'normal', // Display legend items in the order they appear in the data array
+          font: {
+            family: '"Montserrat", sans-serif',
+            size: 15,
+            color: '#000', // Legend text color
+          },
+        },
+        responsive: true,
+        useResizeHandler: true,
+        autosize: true,
+        width: '100%',
+        height: '100%'
+      };
+    }
+  }
+
+  var x = window.matchMedia("(max-width: 810px)")
+  resizeLayout(x) // Call listener function at run time
+  x.addEventListener("change", () => {
+    this.resizeLayout();
+  }); // Attach listener function on state changes
 
   const chartContainerStyle = {
     border: "2px solid #BABABA", // Thin border
@@ -159,14 +217,16 @@ const PieChart = ({
       <h1 style={dataTitleStyle}>Future Payment Responsiblity</h1>
       <p style={dataSubtitleStyle}>What does it really look like to repay your student loans? <br />
       Based on current tax rates, here’s the repayment on your projected income.</p>
-      <ResizableDiv style={plotStyle}>
-        <Plot 
-          data={data} 
-          layout={layout} 
-          useResizeHandler={true}
-          style={{width: "100%", height: "100%"}}
-        />
-      </ResizableDiv>
+      <div style={plotStyle}>
+        <ResizableDiv >
+          <Plot 
+            data={data} 
+            layout={layout} 
+            useResizeHandler={true}
+            style={{width: "100%", height: "100%"}}
+          />
+        </ResizableDiv>
+      </div>
     </div>
   );
 };
