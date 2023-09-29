@@ -35,7 +35,6 @@ const Data = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //fetch goes here
     console.log (loanAmount)
     console.log (interestRate)
     console.log(loanTerm)

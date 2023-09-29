@@ -24,19 +24,19 @@ function LoanForm({
 
 const handleChange = (e) => {
   let {name, value} = e.target
-  if (name = "loanAmount") {
+  if (name === "loanAmount") {
     setLoanAmount(value)
-  } else if (name = "interestRate") {
+  } else if (name === "interestRate") {
     setInterestRate(value)
-  } else if (name = "loanTerm") {
+  } else if (name === "loanTerm") {
     setLoanTerm(value)
-  } else if (name = "school") {
+  } else if (name === "school") {
     setSchool(value) 
-  } else if (name = "major") {
+  } else if (name === "major") {
     setMajor(value)
-  } else if (name = "annualSalary") {
+  } else if (name === "annualSalary") {
     onAnnualSalaryChange(value)
-  } else if (name ="stateTaxPercentage") {
+  } else if (name === "stateTaxPercentage") {
     stateTaxPercentage(value)
   }
 
