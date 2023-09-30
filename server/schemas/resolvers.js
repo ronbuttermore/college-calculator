@@ -10,8 +10,8 @@ const resolvers = {
     user: async (parent, args) => {
       return User.findById(args.id).populate('searches');
     },
-    searches: async () => {
-      return Search.find({});
+    searches: async (parent, { searchedBy }) => {
+      return Search.find({ searchedBy: searchedBy });
     },
     search: async (parent, { searchId }) => {
       return await Search.findOne({ _id: searchId });
