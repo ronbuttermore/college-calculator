@@ -8,8 +8,13 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SEARCHES } from '../../utils/queries';
 
 function Home() {
+  const currentUser = Auth.getProfile().data.username;
 
-  const { loading, data } = useQuery(QUERY_SEARCHES);
+  console.log(currentUser);
+
+  const { loading, data } = useQuery(QUERY_SEARCHES, { variables: { searchedBy: currentUser }, });
+
+  console.log(data);
 
   const searches = data?.searches || [];
 
@@ -19,9 +24,15 @@ function Home() {
             {Auth.loggedIn() ? (
               <>
                 <Results />
-                <SavedSearch 
+                <div>
+                {loading ? (
+                  <div>Loading...</div>
+                ) : (
+                  <SavedSearch
                   searches={searches}
                 />
+          )}
+          </div>
               </>
             ) : (
               <>
