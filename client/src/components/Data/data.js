@@ -45,6 +45,14 @@ const Data = () => {
     e.preventDefault();
 
     try {
+      console.log (loanAmount)
+      console.log (interestRate)
+      console.log(loanTerm)
+      console.log(annualSalary)
+      console.log(stateTaxPercentage)
+      console.log(university);
+      console.log(major);
+      console.log(searchedBy);
       const formData = {
         university: university,
         major: major,
@@ -59,7 +67,7 @@ const Data = () => {
     } catch (err) {
       console.error(err);
     }
-    window.location.reload();
+    alert('Search Saved!');
   };
 
   return (
