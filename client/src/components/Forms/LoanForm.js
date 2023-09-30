@@ -43,9 +43,9 @@ const handleChange = (e) => {
 };
 
 const userFormStyle = {
-  fontSize: "24px",
-  padding: "0.5rem",
-  margin: "1rem 0",
+  // padding: "0.5rem",
+  margin: "1rem",
+  marginTop: "0",
 };
 
 const formLabelStyle = {
@@ -53,7 +53,13 @@ const formLabelStyle = {
 }
 
 const formTitleStyle = {
-
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "left",
+  padding: "1rem 0.5rem",
+  color: "rgb(15, 15, 15)",
+  fontWeight: "400",
+  fontSize: "25px"
 }
 
   return (

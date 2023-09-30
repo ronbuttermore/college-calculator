@@ -72,11 +72,15 @@ const Data = () => {
 
   const formStyle = {
     fontSize: "24px",
-    padding: "0.5rem",
-    borderRadius: "0.5rem",
+    padding: "1rem",
+    borderRadius: "2rem",
     border: "2px solid #BABABA",
     backgroundColor: "white",
     margin: "1rem 0",
+    maxWidth: '1000px',
+    width: '80vw',
+    margin: '20px auto',
+    textAlign: 'left',
   };
 
   const btnStyle = {
