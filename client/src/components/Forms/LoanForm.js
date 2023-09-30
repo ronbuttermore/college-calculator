@@ -41,10 +41,25 @@ const handleChange = (e) => {
   }
 
 };
+
+const userFormStyle = {
+  fontSize: "24px",
+  padding: "0.5rem",
+  margin: "1rem 0",
+};
+
+const formLabelStyle = {
+
+}
+
+const formTitleStyle = {
+
+}
+
   return (
-    <>
-      <h2>Loan Details</h2>
-      <label>
+    <div style={userFormStyle}>
+      <h2 style={formTitleStyle}>Loan Details</h2>
+      <label style={formLabelStyle}>
         Loan Amount:
         <input
           type="number"
@@ -54,7 +69,7 @@ const handleChange = (e) => {
         />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         Interest Rate (%):
         <input
           type="number"
@@ -64,7 +79,7 @@ const handleChange = (e) => {
         />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         Loan Term (years):
         <input
           type="number"
@@ -74,19 +89,19 @@ const handleChange = (e) => {
         />
       </label>
 
-      <h2>Education Details</h2>
-      <label>
+      <h2 style={formTitleStyle}>Education Details</h2>
+      <label style={formLabelStyle}>
         School:
         <input type="text" name="university" value={university} onChange={handleChange} />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         Major:
         <input type="text" name='major' value={major} onChange={handleChange}/>
       </label>
 
-      <h2>Income and Tax Details</h2>
-      <label>
+      <h2 style={formTitleStyle}>Income and Tax Details</h2>
+      <label style={formLabelStyle}>
         Annual Salary:
         <input
           type="number"
@@ -96,7 +111,7 @@ const handleChange = (e) => {
         />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         State Tax Percentage (%):
         <input
           type="number"
@@ -105,7 +120,7 @@ const handleChange = (e) => {
           onChange={(e) => onStateTaxPercentageChange(Number(e.target.value), handleChange)}
         />
       </label>
-    </>
+    </div>
     
   );
 }
