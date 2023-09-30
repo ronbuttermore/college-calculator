@@ -40,16 +40,18 @@ export const QUERY_SINGLE_SEARCH = gql`
 `;
 
 export const QUERY_SEARCHES = gql`
-  query getSearches($searchedBy: String!) {
-    searches(searchedBy: $searchedBy) {
+  query getSearches {
+    searches {
       _id
       university
-      major
+      degree
       loanAmount
       interestRate
       loanTerm
       annualSalary
       stateTaxPercentage
+      searchedBy
+      searchedAt
     }
   }
 `;
