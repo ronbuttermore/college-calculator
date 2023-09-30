@@ -4,7 +4,7 @@ import './SavedSearch.css';
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function SavedSearch({ searches }) {
+function SavedSearch() {
     const savedSearchContainerStyle = {
         display: "flex",
         alignItems: "center",
@@ -60,20 +60,14 @@ function SavedSearch({ searches }) {
     function handleChange(e) {
         setChecked(e.target.checked);
      }
-
-    if (!searches.length) {
-        return <h4>No saved searches yet. . .</h4>;
-    }
-
     return (
         <div id='saved-searches'>
             <h2 className='saved-search-section-tile'>Saved Searches</h2>
-            {searches && searches.map((search) => (
             <div className='saved-search-container' style={savedSearchContainerStyle}>
                 <div className='saved-search-box' style={savedSearchStyle}>
                     <div className='saved-box-title' style={boxTitleStyle}>
                         <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
-                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>{search.university}</h4>
+                        <h4 className='saved-search-title' style={uiniversityTitleStyle}>University Name</h4>
                         <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
                         <br></br>
                         {checked ? (
@@ -87,18 +81,17 @@ function SavedSearch({ searches }) {
                         )}
                     </div>
                     <div style={boxContnetStyle}>
-                        <p style={infoStyle}>Degree: {search.major}
-                            <br /> Loan Amount: {search.loanAmount}
-                            <br /> Interest Rate: {search.interestRate}
+                        <p style={infoStyle}>Degree: Degree Name
+                            <br /> No. Years: 4
+                            <br /> Tution: $00,000.00
                         </p>
-                        <p style={infoStyle}>Loan Term: {search.loanTerm}
-                            <br /> Annual Salary: {search.annualSalary}
-                            <br /> State Tax Rate: {search.stateTaxPercentage}
+                        <p style={infoStyle}>Scholarship: $00,000.00
+                            <br /> Loan Amount: $00,000.00
+                            <br /> Loan Interest: 0%
                         </p>
                     </div>
                 </div>
             </div>
-            ))}
         </div>
     );
 };
