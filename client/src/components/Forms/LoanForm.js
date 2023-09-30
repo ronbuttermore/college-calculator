@@ -4,8 +4,6 @@ import './Form.css';
 //import { useQuery } from '@apollo/client';
 //import { QUERY_SEARCHES } from '../../utils/queries';
 
-
-
 function LoanForm({
   loanAmount, setLoanAmount,
   interestRate, setInterestRate,
@@ -41,12 +39,64 @@ const handleChange = (e) => {
   }
 
 };
+
+const userFormStyle = {
+  // padding: "0.5rem",
+  margin: "1rem",
+  marginTop: "0",
+};
+
+const formLabelStyle = {
+ fontSize: "18px",
+}
+
+const formTitleStyle = {
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "left",
+  padding: "1rem 0.5rem",
+  color: "rgb(15, 15, 15)",
+  fontWeight: "400",
+  fontSize: "25px",
+  marginTop: "1rem"
+}
+
+// const inputStyle = {
+//   position: "relative",
+//   width: "240px",
+// }
+
+const inputStyle = {
+  border: "1.5px solid #BABABA",
+  borderRadius: "0.5rem",
+  padding: "0.5rem 1rem",
+  fontSize: "15px",
+  backgroundColor: "#fff",
+  width: "100%",
+  boxSizing: "border-box",
+  color: "#BABABA",
+  marginBottom: "0.75rem"
+}
+
+const hrStlye = {
+  border: "1px solid #BABABA",
+  marginTop: "1rem",
+}
+
+// const inputImageStyle = {
+//   position: "absolute",
+//   top: "2px",
+//   right: "5px",
+// }
+
   return (
-    <>
-      <h2>Loan Details</h2>
-      <label>
+    <div style={userFormStyle}>
+      <h2 style={formTitleStyle}>Loan Details</h2>
+      <label style={formLabelStyle}>
         Loan Amount:
+        {/* <FontAwesomeIcon icon={faDollarSign} /> */}
         <input
+          style={inputStyle}
           type="number"
           name='loanAmount'
           value={loanAmount}
@@ -54,9 +104,10 @@ const handleChange = (e) => {
         />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         Interest Rate (%):
         <input
+          style={inputStyle}
           type="number"
           name="interestRate"
           value={interestRate}
@@ -64,9 +115,10 @@ const handleChange = (e) => {
         />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         Loan Term (years):
         <input
+          style={inputStyle}
           type="number"
           name='loanTerm'
           value={loanTerm}
@@ -74,21 +126,26 @@ const handleChange = (e) => {
         />
       </label>
 
-      <h2>Education Details</h2>
-      <label>
+      <hr style={hrStlye}/>
+
+      <h2 style={formTitleStyle}>Education Details</h2>
+      <label style={formLabelStyle}>
         School:
-        <input type="text" name="university" value={university} onChange={handleChange} />
+        <input style={inputStyle} type="text" name="university" value={university} onChange={handleChange} />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         Major:
-        <input type="text" name='major' value={major} onChange={handleChange}/>
+        <input style={inputStyle} type="text" name='major' value={major} onChange={handleChange}/>
       </label>
 
-      <h2>Income and Tax Details</h2>
-      <label>
+      <hr style={hrStlye}/>
+
+      <h2 style={formTitleStyle}>Income and Tax Details</h2>
+      <label style={formLabelStyle}>
         Annual Salary:
         <input
+          style={inputStyle}
           type="number"
           name="annualSalary"
           value={annualSalary}
@@ -96,16 +153,17 @@ const handleChange = (e) => {
         />
       </label>
       <br />
-      <label>
+      <label style={formLabelStyle}>
         State Tax Percentage (%):
         <input
+          style={inputStyle}
           type="number"
           name="stateTaxPercentage"
           value={stateTaxPercentage}
           onChange={(e) => onStateTaxPercentageChange(Number(e.target.value), handleChange)}
         />
       </label>
-    </>
+    </div>
     
   );
 }

@@ -70,9 +70,32 @@ const Data = () => {
     window.location.reload();
   };
 
+  const formStyle = {
+    fontSize: "24px",
+    padding: "1rem",
+    borderRadius: "2rem",
+    border: "2px solid #BABABA",
+    backgroundColor: "white",
+    margin: "1rem 0",
+    maxWidth: '1000px',
+    width: '80vw',
+    margin: '20px auto',
+    textAlign: 'left',
+  };
+
+  const btnStyle = {
+    fontSize: "16px",
+    color: "white",
+    fontWeight: "500",
+    padding: "0.5rem 1.5rem",
+    borderRadius: "0.5rem",
+    border: "none",
+    backgroundColor: "#BABABA",
+  }
+
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
+      <form style={formStyle} onSubmit={handleSubmit}>
         <LoanForm
           loanAmount={loanAmount}
           setLoanAmount={setLoanAmount}
@@ -94,7 +117,10 @@ const Data = () => {
           setMajor={setMajor}
           
         />
-        <button type="submit">Submit</button>
+        {/* <button type="submit">Submit</button> */}
+        <button type="submit" style={btnStyle}>
+          Save Results
+        </button>
       </form>
 
      <div className="chart-container">
@@ -127,14 +153,14 @@ const Data = () => {
         />
       </div>
 
-      <div className='save-button-container'>
+      {/* <div className='save-button-container'>
         <button className="save-btn">
           Save Updated Results
         </button>
-        <button className="save-btn">
-          Save New Results
+        <button type="submit" className="save-btn">
+          Save Results
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
