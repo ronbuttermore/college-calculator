@@ -1,31 +1,22 @@
 const db = require('../config/connection');
-const { Search, User } = require('../models');
-const searchData = require('./searchData.json');
+const { User, Search } = require('../models');
+
 const userData = require('./userData.json');
+const searchData = require('./searchData.json');
 
-db.once('open', async() => {
-    try {
-        await Search.deleteMany({});
-        await User.deleteMany({});
-    
-        await User.create(userData);
-    
-        for (let i = 0; i < searchData.length; i++) {
-          const { _id, searchedBy } = await Search.create(searchData[i]);
-          const user = await User.findOneAndUpdate(
-            { username: searchedBy },
-            {
-              $addToSet: {
-                searches: _id,
-              },
-            }
-          );
-        }
-      } catch (err) {
-        console.error(err);
-        process.exit(1);
-      }
+db.once('open', async () => {
+  await User.deleteMany({});
+  await Search.deleteMany({});
 
-    console.log('Seed successful!');
-    process.exit(0);
+  const users = await User.insertMany(userData);
+  const searches = await Search.insertMany(searchData);
+
+  for (newSearch of searches) {
+    const tempUser = users[Math.floor(Math.random() * users.length)];
+    tempUser.searches.push(newSearch._id);
+    await tempUser.save();
+  }
+
+  console.log('all done!');
+  process.exit(0);
 });

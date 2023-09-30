@@ -1,50 +1,38 @@
 [
     {
         "university": "University of Denver",
-        "degree": "Computer Science",
-        "noyears": 4,
-        "tuition": 60000,
-        "scholarships": 10000,
+        "major": "Computer Science",
         "loanAmount": 50000,
-        "loanInterest": 4,
-        "loanTerm": 10,
-        "projectedSalary": 80000,
-        "searchedBy": "ronbuttermore"
+        "interestRate": 4,
+        "loanTerm": 5,
+        "annualSalary": 80000,
+        "stateTaxPercentage": 3
     },
     {
         "university": "University of Colorado",
-        "degree": "Economics",
-        "noyears": 4,
-        "tuition": 60000,
-        "scholarships": 20000,
-        "loanAmount": 40000,
-        "loanInterest": 3,
-        "loanTerm": 15,
-        "projectedSalary": 70000,
-        "searchedBy": "danielford"
+        "major": "Business",
+        "loanAmount": 60000,
+        "interestRate": 5,
+        "loanTerm": 10,
+        "annualSalary": 70000,
+        "stateTaxPercentage": 4
     },
     {
-        "university": "Colorado Christian College",
-        "degree": "Psychology",
-        "noyears": 4,
-        "tuition": 40000,
-        "scholarships": 10000,
-        "loanAmount": 30000,
-        "loanInterest": 2,
-        "loanTerm": 5,
-        "projectedSalary": 50000,
-        "searchedBy": "sarahpaterson"
+        "university": "Colorado State University",
+        "major": "Pyschology",
+        "loanAmount": 40000,
+        "interestRate": 6,
+        "loanTerm": 15,
+        "annualSalary": 60000,
+        "stateTaxPercentage": 6
     },
     {
         "university": "Colorado Mesa University",
-        "degree": "Mathematics",
-        "noyears": 4,
-        "tuition": 30000,
-        "scholarships": 15000,
-        "loanAmount": 15000,
-        "loanInterest": 5,
+        "major": "Theater",
+        "loanAmount": 30000,
+        "interestRate": 3,
         "loanTerm": 20,
-        "projectedSalary": 90000,
-        "searchedBy": "renrojas"
+        "annualSalary": 50000,
+        "stateTaxPercentage": 6
     }
 ]
