@@ -23,6 +23,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     searches: [Search]
+    user(id: ID!): User
+    search(id: ID!): Search
   }
 `;
 
