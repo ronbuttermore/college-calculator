@@ -20,13 +20,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  searches: [searchSchema],
-  // searches: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'Search',
-  //   },
-  // ],
+  searches: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Search',
+    },
+  ],
 });
 
 userSchema.pre('save', async function (next) {

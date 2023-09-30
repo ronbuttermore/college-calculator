@@ -25,16 +25,17 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_SEARCH = gql`
-  mutation addSearch($university: String!, $searchedBy: String!) {
-    addSearch(university: $university, searchedBy: $searchedBy) {
+  mutation addSearch($university: String!, $major: String!, $loanAmount: Int!, $interestRate: Int!, $loanTerm: Int!, $annualSalary: Int!, $stateTaxPercentage: Int!, $searchedBy: String!) {
+    addSearch(university: $university, major: $major, loanAmount: $loanAmount, interestRate: $interestRate, loanTerm: $loanTerm, annualSalary: $annualSalary, stateTaxPercentage: $stateTaxPercentage, searchedBy: $searchedBy) {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
+      university
+      major
+      loanAmount
+      interestRate
+      loanTerm
+      annualSalary
+      stateTaxPercentage
+      searchedBy
     }
   }
 `;

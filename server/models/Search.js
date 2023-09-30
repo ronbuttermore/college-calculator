@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const searchSchema = new Schema(
   
@@ -8,53 +9,39 @@ const searchSchema = new Schema(
         required: true,
         unique: false,
         trim: true,
-        minlength: 1,
-        maxlength: 200
       },
-      degree: {
+      major: {
         type: String,
-//        required: true,
         unique: false,
         trim: true,
-        minlength: 1,
-        maxlength: 200
-      },
-      noyears: {
-        type: Number,
- //       required: true,
-      },
-      tuition: {
-        type: Number,
- //       required: true
-      },
-      scholarships: {
-        type: Number,
- //       required: false,
-        default: 0
       },
       loanAmount: {
         type: Number,
- //       required: true
       },
-      loanInterest: {
+      interestRate: {
         type: Number,
-  //      required: true
       },
       loanTerm: {
         type: Number,
-  //      required: true
       },
-      projectedSalary: {
+      annualSalary: {
         type: Number,
-  //      required: true
       },
-      // savedBy: {
-      //   type: String
-   //   }
+      stateTaxPercentage: {
+        type: Number,
+      },
+      searchedBy: {
+        type: String
+      },
+      searchedAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      }
     }
   );
   
- // const Search = model('Search', searchSchema);
+ const Search = model('Search', searchSchema);
   
-  module.exports = searchSchema;
+  module.exports = Search;
   
