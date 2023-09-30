@@ -59,7 +59,7 @@ const Data = () => {
     } catch (err) {
       console.error(err);
     }
-    window.location.reload();
+    alert('Search Saved!');
   };
 
   return (
