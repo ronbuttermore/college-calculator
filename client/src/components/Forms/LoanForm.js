@@ -50,7 +50,7 @@ const userFormStyle = {
 };
 
 const formLabelStyle = {
- fontSize: "18px"
+ fontSize: "18px",
 }
 
 const formTitleStyle = {
@@ -60,15 +60,46 @@ const formTitleStyle = {
   padding: "1rem 0.5rem",
   color: "rgb(15, 15, 15)",
   fontWeight: "400",
-  fontSize: "25px"
+  fontSize: "25px",
+  marginTop: "1rem"
 }
+
+// const inputStyle = {
+//   position: "relative",
+//   width: "240px",
+// }
+
+const inputStyle = {
+  border: "1.5px solid #BABABA",
+  borderRadius: "0.5rem",
+  padding: "0.5rem 1rem",
+  fontSize: "15px",
+  backgroundColor: "#fff",
+  width: "100%",
+  boxSizing: "border-box",
+  color: "#BABABA",
+  marginBottom: "0.75rem"
+}
+
+const hrStlye = {
+  border: "1px solid #BABABA",
+  marginTop: "1rem",
+}
+
+// const inputImageStyle = {
+//   position: "absolute",
+//   top: "2px",
+//   right: "5px",
+// }
 
   return (
     <div style={userFormStyle}>
       <h2 style={formTitleStyle}>Loan Details</h2>
       <label style={formLabelStyle}>
         Loan Amount:
+        {/* <FontAwesomeIcon icon={faDollarSign} /> */}
         <input
+          style={inputStyle}
           type="number"
           name='loanAmount'
           value={loanAmount}
@@ -79,6 +110,7 @@ const formTitleStyle = {
       <label style={formLabelStyle}>
         Interest Rate (%):
         <input
+          style={inputStyle}
           type="number"
           name="interestRate"
           value={interestRate}
@@ -89,6 +121,7 @@ const formTitleStyle = {
       <label style={formLabelStyle}>
         Loan Term (years):
         <input
+          style={inputStyle}
           type="number"
           name='loanTerm'
           value={loanTerm}
@@ -96,21 +129,26 @@ const formTitleStyle = {
         />
       </label>
 
+      <hr style={hrStlye}/>
+
       <h2 style={formTitleStyle}>Education Details</h2>
       <label style={formLabelStyle}>
         School:
-        <input type="text" name="university" value={university} onChange={handleChange} />
+        <input style={inputStyle} type="text" name="university" value={university} onChange={handleChange} />
       </label>
       <br />
       <label style={formLabelStyle}>
         Major:
-        <input type="text" name='major' value={major} onChange={handleChange}/>
+        <input style={inputStyle} type="text" name='major' value={major} onChange={handleChange}/>
       </label>
+
+      <hr style={hrStlye}/>
 
       <h2 style={formTitleStyle}>Income and Tax Details</h2>
       <label style={formLabelStyle}>
         Annual Salary:
         <input
+          style={inputStyle}
           type="number"
           name="annualSalary"
           value={annualSalary}
@@ -121,6 +159,7 @@ const formTitleStyle = {
       <label style={formLabelStyle}>
         State Tax Percentage (%):
         <input
+          style={inputStyle}
           type="number"
           name="stateTaxPercentage"
           value={stateTaxPercentage}
