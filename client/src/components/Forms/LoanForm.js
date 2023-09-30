@@ -4,7 +4,8 @@ import './Form.css';
 //import { useQuery } from '@apollo/client';
 //import { QUERY_SEARCHES } from '../../utils/queries';
 
-
+import { faDollarSign, faPercent } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function LoanForm({
   loanAmount, setLoanAmount,
@@ -49,7 +50,7 @@ const userFormStyle = {
 };
 
 const formLabelStyle = {
-
+ fontSize: "18px"
 }
 
 const formTitleStyle = {
