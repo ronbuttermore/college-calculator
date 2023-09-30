@@ -23,6 +23,8 @@ const Data = () => {
   const [stateTaxPercentage, setStateTaxPercentage] = useState(6);
   const [university,setUniversity] = useState("");
   const [major, setMajor] = useState("");
+  const currentUser = Auth.getProfile().data.username;
+  const [searchedBy, setSearchedBy] = useState(currentUser);
 
 
   useEffect(() => {
@@ -37,26 +39,12 @@ const Data = () => {
     setMonthlyLoanPayment(monthlyPaymentValue);
   }, [loanAmount, interestRate, loanTerm]);
 
-  const formData = {
-    university: university,
-    major: major,
-    loanAmount: loanAmount,
-    interestRate: interestRate,
-    loanTerm: loanTerm,
-    annualSalary: annualSalary,
-    stateTaxPercentage: stateTaxPercentage,
-    searchedBy: Auth.getProfile().data.username
-  };
-
   const [addSearch, {error}] = useMutation(ADD_SEARCH);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     try {
-      const { data } = addSearch(formData);
-
-      window.location.reload();
       console.log (loanAmount)
       console.log (interestRate)
       console.log(loanTerm)
@@ -64,6 +52,18 @@ const Data = () => {
       console.log(stateTaxPercentage)
       console.log(university);
       console.log(major);
+      console.log(searchedBy);
+      const formData = {
+        university: university,
+        major: major,
+        loanAmount: loanAmount,
+        interestRate: interestRate,
+        loanTerm: loanTerm,
+        annualSalary: annualSalary,
+        stateTaxPercentage: stateTaxPercentage,
+        searchedBy: searchedBy
+      };
+      const { data } = addSearch({ variables: { ...formData},});
     } catch (err) {
       console.error(err);
     }
