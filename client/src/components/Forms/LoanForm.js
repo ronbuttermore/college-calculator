@@ -4,9 +4,6 @@ import './Form.css';
 //import { useQuery } from '@apollo/client';
 //import { QUERY_SEARCHES } from '../../utils/queries';
 
-import { faDollarSign, faPercent } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 function LoanForm({
   loanAmount, setLoanAmount,
   interestRate, setInterestRate,

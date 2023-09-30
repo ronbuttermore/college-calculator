@@ -62,7 +62,7 @@ function SavedSearch({ searches }) {
      }
 
     if (!searches.length) {
-        return <h4>No saved searches yet. . .</h4>;
+        return <h4 id='saved-searches'>No saved searches yet. . .</h4>;
     }
 
     return (
