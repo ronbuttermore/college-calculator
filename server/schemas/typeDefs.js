@@ -48,7 +48,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSearch(searchData: SearchInput!): User
+    addSearch(university: String!, major: String!, loanAmount: Int!, interestRate: Int!, loanTerm: Int!, annualSalary: Int!, stateTaxPercentage: Int! ): Search
     removeSearch(searchId: ID!): Search
   }
 `;

@@ -43,16 +43,8 @@ const resolvers = {
       return { token, user };
     },
 
-    addSearch: async (parent,  {searchData} , context) => {
-      if (context.user) {      
-        const user = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { addSearch: searchData } },
-          {new: true}
-        );
-        return user;    
-      }
-      throw new AuthenticationError('You need to be logged in!');
+    addSearch: async (parent,  { university, major, loanAmount, interestRate, loanTerm, annualSalary, stateTaxPercentage }) => {
+      return await Search.create({ university, major, loanAmount, interestRate, loanTerm, annualSalary, stateTaxPercentage });
     },
 
     removeSearch: async (parent, { searchId }) => {
