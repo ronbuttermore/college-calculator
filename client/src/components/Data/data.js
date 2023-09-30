@@ -6,6 +6,10 @@ import StudentLoanPieChart from '../Data/StudentLoanPieChart';
 import YearOverYearComparison from '../Data/YearOverYearComparison';
 
 import LoanForm from '../Forms/LoanForm'
+import { useMutation } from '@apollo/client';
+
+import { ADD_SEARCH } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const Data = () => {
   //Define loan details
@@ -17,7 +21,7 @@ const Data = () => {
   const [monthlyLoanPayment, setMonthlyLoanPayment] = useState(0);
   const [annualSalary, setAnnualSalary] = useState(80000);
   const [stateTaxPercentage, setStateTaxPercentage] = useState(6);
-  const [school,setSchool] = useState("");
+  const [university,setUniversity] = useState("");
   const [major, setMajor] = useState("");
 
 
@@ -33,15 +37,37 @@ const Data = () => {
     setMonthlyLoanPayment(monthlyPaymentValue);
   }, [loanAmount, interestRate, loanTerm]);
 
+  const formData = {
+    university: university,
+    major: major,
+    loanAmount: loanAmount,
+    interestRate: interestRate,
+    loanTerm: loanTerm,
+    annualSalary: annualSalary,
+    stateTaxPercentage: stateTaxPercentage,
+    searchedBy: Auth.getProfile().data.username
+  };
+
+  const [addSearch, {error}] = useMutation(ADD_SEARCH);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log (loanAmount)
-    console.log (interestRate)
-    console.log(loanTerm)
-    console.log(annualSalary)
-    console.log(stateTaxPercentage)
 
-    // You can add code here to handle form submission if needed.
+    try {
+      const { data } = addSearch(formData);
+
+      window.location.reload();
+      console.log (loanAmount)
+      console.log (interestRate)
+      console.log(loanTerm)
+      console.log(annualSalary)
+      console.log(stateTaxPercentage)
+      console.log(university);
+      console.log(major);
+    } catch (err) {
+      console.error(err);
+    }
+    alert('Search Saved!');
   };
 
   return (
@@ -62,8 +88,8 @@ const Data = () => {
           onLoanTermChange={setLoanTerm}
           onAnnualSalaryChange={setAnnualSalary}
           onStateTaxPercentageChange={setStateTaxPercentage}
-          school={school}
-          setSchool={setSchool}
+          university={university}
+          setUniversity={setUniversity}
           major={major}
           setMajor={setMajor}
           

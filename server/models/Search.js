@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const searchSchema = new Schema(
   
@@ -8,15 +9,11 @@ const searchSchema = new Schema(
         required: true,
         unique: false,
         trim: true,
-        minlength: 1,
-        maxlength: 200
       },
       major: {
         type: String,
         unique: false,
         trim: true,
-        minlength: 1,
-        maxlength: 200
       },
       loanAmount: {
         type: Number,
@@ -32,6 +29,14 @@ const searchSchema = new Schema(
       },
       stateTaxPercentage: {
         type: Number,
+      },
+      searchedBy: {
+        type: String
+      },
+      searchedAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
       }
     }
   );

@@ -10,33 +10,70 @@ export const QUERY_USER = gql`
         _id
         university
         degree
-        noyears
-        tuition
-        scholarships
         loanAmount
-        loanInterest
+        interestRate
         loanTerm
-        projectedSalary
+        annualSalary
+        stateTaxPercentage
         searchedBy
+        searchedAt
       }
     }
   }
 `;
 
+export const QUERY_SINGLE_SEARCH = gql`
+  query getSingleSearch($searchId: ID!) {
+    search(searchId: $searchId) {
+      _id
+      university
+      major
+      loanAmount
+      interestRate
+      loanTerm
+      annualSalary
+      stateTaxPercentage
+      searchedBy
+      searchedAt
+    }
+  }
+`;
+
 export const QUERY_SEARCHES = gql`
-  query getSearch {
+  query getSearches {
     searches {
       _id
       university
       degree
-      noyears
-      tuition
-      scholarships
       loanAmount
-      loanInterest
+      interestRate
       loanTerm
-      projectedSalary
+      annualSalary
+      stateTaxPercentage
       searchedBy
+      searchedAt
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      searches {
+        _id
+        university
+        major
+        loanAmount
+        interestRate
+        loanTerm
+        annualSalary
+        stateTaxPercentage
+        searchedBy
+        searchedAt
+      }
     }
   }
 `;

@@ -10,7 +10,7 @@ function LoanForm({
   loanAmount, setLoanAmount,
   interestRate, setInterestRate,
   loanTerm, setLoanTerm,
-  school, setSchool,
+  university, setUniversity,
   major, setMajor,
   annualSalary,
   stateTaxPercentage,
@@ -30,8 +30,8 @@ const handleChange = (e) => {
     setInterestRate(value)
   } else if (name === "loanTerm") {
     setLoanTerm(value)
-  } else if (name === "school") {
-    setSchool(value) 
+  } else if (name === "university") {
+    setUniversity(value) 
   } else if (name === "major") {
     setMajor(value)
   } else if (name === "annualSalary") {
@@ -77,7 +77,7 @@ const handleChange = (e) => {
       <h2>Education Details</h2>
       <label>
         School:
-        <input type="text" name="school" value={school} onChange={handleChange} />
+        <input type="text" name="university" value={university} onChange={handleChange} />
       </label>
       <br />
       <label>

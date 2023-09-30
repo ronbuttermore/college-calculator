@@ -6,7 +6,8 @@
         "interestRate": 4,
         "loanTerm": 5,
         "annualSalary": 80000,
-        "stateTaxPercentage": 3
+        "stateTaxPercentage": 3,
+        "searchedBy": "ronbuttermore"
     },
     {
         "university": "University of Colorado",
@@ -15,7 +16,8 @@
         "interestRate": 5,
         "loanTerm": 10,
         "annualSalary": 70000,
-        "stateTaxPercentage": 4
+        "stateTaxPercentage": 4,
+        "searchedBy": "renrojas"
     },
     {
         "university": "Colorado State University",
@@ -24,7 +26,8 @@
         "interestRate": 6,
         "loanTerm": 15,
         "annualSalary": 60000,
-        "stateTaxPercentage": 6
+        "stateTaxPercentage": 6,
+        "searchedBy": "sarahpaterson"
     },
     {
         "university": "Colorado Mesa University",
@@ -33,6 +36,7 @@
         "interestRate": 3,
         "loanTerm": 20,
         "annualSalary": 50000,
-        "stateTaxPercentage": 6
+        "stateTaxPercentage": 6,
+        "searchedBy": "danielford"
     }
 ]

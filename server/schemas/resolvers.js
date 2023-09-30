@@ -5,22 +5,22 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find({}).populate('searches');
+      return User.find({}).populate('searches');
     },
     user: async (parent, args) => {
-      return await User.findById(args.id).populate('searches');
+      return User.findById(args.id).populate('searches');
+    },
+    searches: async () => {
+      return Search.find({});
+    },
+    search: async (parent, { searchId }) => {
+      return await Search.findOne({ _id: searchId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('searches');
       }
       throw new AuthenticationError('You need to be logged in!');
-    },
-    searches: async () => {
-      return await Search.find({});
-    },
-    search: async (parent, args) => {
-      return await Search.findById(args.id);
     }
   },
   Mutation: {
@@ -43,12 +43,35 @@ const resolvers = {
       return { token, user };
     },
 
-    addSearch: async (parent,  { university, major, loanAmount, interestRate, loanTerm, annualSalary, stateTaxPercentage }) => {
-      return await Search.create({ university, major, loanAmount, interestRate, loanTerm, annualSalary, stateTaxPercentage });
-    },
+    addSearch: async (parent,  { university, major, loanAmount, interestRate, loanTerm, annualSalary, stateTaxPercentage, searchedBy }) => {
 
-    removeSearch: async (parent, { searchId }) => {
-      return Search.findOneAndDelete({ _id: searchId });
+      const search = await Search.create({
+        university,
+        major,
+        loanAmount,
+        interestRate,
+        loanTerm,
+        annualSalary,
+        stateTaxPercentage,
+        searchedBy
+      });
+
+      await User.findOneAndUpdate(
+        { username: searchedBy },
+        { $addToSet: { searches: search._id } }
+      );
+
+      return search;
+    },
+    removeSearch: async (parent, { searchId }, context) => {
+      if (context.user) {
+        const search = await Search.findOneAndDelete({
+          _id: searchId,
+          searchedBy: context.user.username,
+        });
+        return search;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   }
 };

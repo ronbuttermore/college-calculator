@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    searches: [Search]
+    searches: [Search]!
   }
 
   type Search {
@@ -18,19 +18,9 @@ const typeDefs = gql`
     loanTerm: Int
     annualSalary: Int
     stateTaxPercentage: Int
+    searchedBy: String
+    searchedAt: String
   }
-
-  input SearchInput {
-    _id: ID
-    university: String
-    major: String
-    loanAmount: Int
-    interestRate: Int
-    loanTerm: Int
-    annualSalary: Int
-    stateTaxPercentage: Int
-  }
-
 
   type Auth {
     token: ID!
@@ -39,16 +29,16 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    user(username: String!): User
     searches: [Search]
-    user(id: ID!): User
-    search(id: ID!): Search
+    search(searchId: ID!): Search
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSearch(university: String!, major: String!, loanAmount: Int!, interestRate: Int!, loanTerm: Int!, annualSalary: Int!, stateTaxPercentage: Int! ): Search
+    addSearch(university: String!, major: String!, loanAmount: Int!, interestRate: Int!, loanTerm: Int!, annualSalary: Int!, stateTaxPercentage: Int!, searchedBy: String! ): Search
     removeSearch(searchId: ID!): Search
   }
 `;
