@@ -3,8 +3,10 @@ import './SavedSearch.css';
 
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useMutation } from '@apollo/client';
+import { REMOVE_SEARCH } from '../../utils/mutations';
 
-function SavedSearch({ searches }) {
+function SavedSearch({ searches, handleRemove }) {
     const savedSearchContainerStyle = {
         display: "flex",
         alignItems: "center",
@@ -71,8 +73,8 @@ function SavedSearch({ searches }) {
             {searches && searches.map((search) => (
             <div className='saved-search-container' style={savedSearchContainerStyle}>
                 <div className='saved-search-box' style={savedSearchStyle}>
-                    <div className='saved-box-title' style={boxTitleStyle}>
-                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} />
+                    <div className='saved-box-title' style={boxTitleStyle} id={search._id}>
+                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} onClick={handleRemove}/>
                         <h4 className='saved-search-title' style={uiniversityTitleStyle}>{search.university}</h4>
                         <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
                         <br></br>
