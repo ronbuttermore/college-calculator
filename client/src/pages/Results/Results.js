@@ -17,7 +17,7 @@ function Results() {
 
         const handleRemove = (event) => {
                 event.preventDefault();
-                const targetId = event.target.parentElement.id;
+                const targetId = event.currentTarget.parentElement.id;
                 console.log(targetId);
                 try {
                    removeSearch({ variables: { searchId: targetId },});
