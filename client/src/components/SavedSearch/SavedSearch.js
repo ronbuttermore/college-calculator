@@ -3,8 +3,6 @@ import './SavedSearch.css';
 
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useMutation } from '@apollo/client';
-import { REMOVE_SEARCH } from '../../utils/mutations';
 
 function SavedSearch({ searches, handleRemove }) {
     const savedSearchContainerStyle = {
@@ -61,6 +59,12 @@ function SavedSearch({ searches, handleRemove }) {
     const [checked, setChecked] = React.useState(false);
     function handleChange(e) {
         setChecked(e.target.checked);
+        if (e.currentTarget.getAttribute("checked")) {
+            const allCheckboxes = document.getElementsByClassName("savedSearches")
+            for (let i=0; i < allCheckboxes.length; i++) {
+                allCheckboxes[i].removeAttribute("checked");
+            };
+        }
      }
 
     if (!searches.length) {
@@ -76,7 +80,7 @@ function SavedSearch({ searches, handleRemove }) {
                     <div className='saved-box-title' style={boxTitleStyle} id={search._id} >
                         <FontAwesomeIcon style={deleteStyle} icon={faTimes} onClick={handleRemove} />
                         <h4 className='saved-search-title' style={uiniversityTitleStyle}>{search.university}</h4>
-                        <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
+                        <input style={checkboxStyle} className="savedSearches" value="test" type="checkbox" onChange={handleChange} />
                         <br></br>
                         {checked ? (
                             <div>
