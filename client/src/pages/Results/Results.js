@@ -27,7 +27,6 @@ function Results() {
                 console.error(err);
             }
             window.location.reload();
-            console.log(data);
         };
 
         return (
