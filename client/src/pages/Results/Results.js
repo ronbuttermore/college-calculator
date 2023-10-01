@@ -13,22 +13,23 @@ function Results() {
 
         const currentUser = Auth.getProfile().data.username;
 
-        const { loading, data } = useQuery(QUERY_SEARCHES, { variables: { searchedBy: currentUser }, });
-        
-        const searches = data?.searches || [];
-
         const [removeSearch, {error}] = useMutation(REMOVE_SEARCH);
 
         const handleRemove = (event) => {
-            try {
-            const searchID = event.target.parentElement.id;
-            const { data } = removeSearch({ variables: { searchId: searchID },});
-            } catch (err) {
-                console.error(err);
-            }
-            window.location.reload();
-            console.log(data);
+                event.preventDefault();
+                const targetId = event.target.parentElement.id;
+                console.log(targetId);
+                try {
+                   removeSearch({ variables: { searchId: targetId },});
+                } catch (err) {
+                        console.log(err);
+                }
+                window.location.reload();
         };
+
+        const { loading, data } = useQuery(QUERY_SEARCHES, { variables: { searchedBy: currentUser }, });
+        
+        const searches = data?.searches || [];
 
         return (
         <div id="landingpage">
@@ -41,8 +42,8 @@ function Results() {
                                         <div>Loading...</div>
                                 ) : (
                                 <SavedSearch
-                                        searches={searches}
                                         handleRemove={handleRemove}
+                                        searches={searches}
                                 />
                                 )}
                         </div>

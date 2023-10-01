@@ -83,8 +83,6 @@ const PieChart = ({
       (annualSalary / 12) - federalTax - stateTax - studentLoanPayment;
     setTakeHomePay(calculatedTakeHomePay);
   }, [annualSalary, federalTax, stateTax, studentLoanPayment]);
-  console.log(federalTax/(annualSalary/12))
-  console.log(federalTax)
 
   const data = [
     {

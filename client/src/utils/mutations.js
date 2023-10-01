@@ -42,7 +42,6 @@ export const ADD_SEARCH = gql`
  export const REMOVE_SEARCH = gql`
   mutation removeSearch($searchId: ID!) {
     removeSearch(searchId: $searchId) {
-      _id
       university
       major
       loanAmount

@@ -73,8 +73,8 @@ function SavedSearch({ searches, handleRemove }) {
             {searches && searches.map((search) => (
             <div className='saved-search-container' style={savedSearchContainerStyle}>
                 <div className='saved-search-box' style={savedSearchStyle}>
-                    <div className='saved-box-title' style={boxTitleStyle} id={search._id}>
-                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} onClick={handleRemove}/>
+                    <div className='saved-box-title' style={boxTitleStyle} id={search._id} >
+                        <FontAwesomeIcon style={deleteStyle} icon={faTimes} onClick={handleRemove} />
                         <h4 className='saved-search-title' style={uiniversityTitleStyle}>{search.university}</h4>
                         <input style={checkboxStyle} value = "test" type = "checkbox" onChange = {handleChange} />
                         <br></br>
