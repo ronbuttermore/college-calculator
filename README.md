@@ -18,7 +18,7 @@ What I learned is that debugging can take take more time than we plan it to. So 
 
 - **I WANT** an analytics tool that will take loan, school and salary projection information as input values then generate charts and tables that illustrate how this decision will impact my personal finances well into the future.
 
-- **SO THAT** I am fully informed and get some financial planning done before deciding the school and major I want to choose.
+- **SO THAT** I am fully informed and can get some financial planning done before deciding the school and major I want to pursue.
 
 ### ACCESSIBILITY CRITERIA
 
@@ -35,6 +35,21 @@ Project Repository on GitHub: https://github.com/ronbuttermore/college-calculato
 Project on Heroku: 
 
 ## Usage
+1. To use, go to live website on Heroku where you will be directed to the main page.
+
+![Homepage](./client/src/assets/CC-homepage.png)
+
+2. Select the option to Sign Up and fill out the empty fields.
+
+![Sign Up Page](./client/src/assets/CC-sign-up.png)
+
+3. Once signed up, you will be greeted with a form to enter all of the financial and school data to generate the graphs to help decide between your education options. Once done, you are welcome to click on "Save Results" where you can access them at a later time.
+
+![Loan Form](./client/src/assets/CC-loan-form.png)
+
+4. If you log out at any time, you can follow Step 1 and click on Log In and fill out the required fields.
+
+![Log In](./client/src/assets/CC-log-in.png)
 
 ## License
 
