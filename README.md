@@ -32,7 +32,8 @@ What I learned is that debugging can take take more time than we plan it to. So 
 
 ## Installation
 Project Repository on GitHub: https://github.com/ronbuttermore/college-calculator
-Project on Heroku: 
+
+Project on Heroku: https://dry-retreat-65171-458eb87d7676.herokuapp.com
 
 ## Usage
 1. To use, go to live website on Heroku where you will be directed to the main page.
