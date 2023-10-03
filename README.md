@@ -12,6 +12,7 @@ What I learned is that debugging can take take more time than we plan it to. So 
 ### Ron's Learning
 
 ### Sarah's Learning
+I learned so much about how React works with styling. I would love to go back and reorganize the styling and the mobile responsiveness. I also learned more about MERN and how the application works together. One of the biggest challenges was discovering how to use Plotly without very instructional documentation. Our team was challenged by different errors that would appear and disappear, but we were able to make it work. For future development, I would love to either work with Plotly better, use another application similar to Plotly, or re-create charts manually.
 
 ### USER STORY
 - **AS A** person who is seeking to go to a college or university,
